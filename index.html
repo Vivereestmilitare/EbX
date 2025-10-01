@@ -1,612 +1,277 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="theme-dark">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="EbX – AI for People. Intelligence for Growth. AI & Digital Transformation Consulting specializing in HR. Launching soon." />
-  <title>EbX – AI for People. Intelligence for Growth.</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EbX – AI for People. Intelligence for Growth.</title>
+    
+    <!-- SEO & Social Media Tags -->
+    <meta name="description" content="EbX provides human-centric AI consulting services, including strategy, change management, and process automation to drive measurable growth.">
+    <meta property="og:title" content="EbX – AI for People. Intelligence for Growth.">
+    <meta property="og:description" content="Transforming businesses through human-centric artificial intelligence solutions.">
+    <meta property="og:image" content="https://www.ebx-ai.com/static/social-preview.jpg"> <!-- IMPORTANT: Replace with your actual preview image URL -->
+    <meta property="og:url" content="https://www.ebx-ai.com"> <!-- IMPORTANT: Replace with your final domain -->
 
-  <!-- CSP updated: allow inline script via nonce AND AJAX to Formspree -->
-  <meta http-equiv="Content-Security-Policy"
-        content="default-src 'self' data:;
-                 script-src 'self' 'nonce-ebx-2025';
-                 style-src 'self' 'unsafe-inline';
-                 img-src 'self' data:;
-                 font-src 'self';
-                 connect-src 'self' https://formspree.io;
-                 object-src 'none';
-                 base-uri 'self';
-                 form-action 'self' https://formspree.io;">
-
-  <style>
-    :root {
-      --clr-primary: #6366f1;
-      --clr-secondary: #06d6a0;
-      --clr-bg: #12121f;
-      --clr-light: #e2e8f0;
-      --clr-light-alt: #cbd5e1;
-      --clr-muted: #64748b;
-    }
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    html { scroll-behavior: smooth; }
-    body {
-      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-      color: var(--clr-light); background: var(--clr-bg); min-height: 100vh;
-      display: flex; flex-direction: column; line-height: 1.6;
-    }
-    a { color: var(--clr-secondary); text-decoration: none; }
-    a:hover, a:focus { text-decoration: underline; outline: 2px solid var(--clr-secondary); outline-offset: 2px; }
-    button, input, textarea { font: inherit; }
-    button:focus, input:focus, textarea:focus { outline: 2px solid var(--clr-secondary); outline-offset: 2px; }
-
-    .container { width: 100%; max-width: 1000px; margin: 0 auto; padding: 0 1.5rem; flex: 1; }
-
-    header {
-      background: rgba(10,10,26,0.9); backdrop-filter: blur(8px);
-      position: sticky; top: 0; z-index: 1000; border-bottom: 1px solid rgba(255,255,255,0.05);
-    }
-    nav { display: flex; justify-content: space-between; align-items: center; padding: 1.5rem 0; }
-    .logo-svg { height: 60px; }
-    .lang-toggle { display: flex; gap: 0.5rem; background: rgba(255,255,255,0.05); border-radius: 50px; padding: 0.25rem; }
-    .lang-btn { background: transparent; border: none; border-radius: 50px; padding: 0.5rem 1rem; color: var(--clr-muted); cursor: pointer; font-size: 0.9rem; transition: all 0.3s ease; }
-    .lang-btn.active { background: var(--clr-primary); color: #fff; box-shadow: 0 4px 12px rgba(99,102,241,0.3); }
-
-    main { flex: 1; }
-    .hero { text-align: center; padding: 6rem 0 4rem; position: relative; overflow: hidden; }
-    .hero::before {
-      content: ''; position: absolute; top: -40%; left: -40%; width: 180%; height: 180%;
-      background: radial-gradient(circle at center, rgba(99,102,241,0.15), transparent 60%); z-index: -1;
-    }
-    .hero h1 { font-size: 3rem; margin-bottom: 1rem; color: #fff; }
-    .hero p { font-size: 1.3rem; color: var(--clr-light-alt); max-width: 700px; margin: 0 auto 2rem; opacity: 0.9; }
-    .coming-soon { display: inline-block; background: linear-gradient(135deg, var(--clr-primary), var(--clr-secondary)); color: #fff; padding: 0.5rem 1.5rem; border-radius: 50px; font-weight: 600; box-shadow: 0 4px 15px rgba(99,102,241,0.3); }
-
-    section { padding: 4rem 0; }
-    h2 { font-size: 2.5rem; margin-bottom: 1.5rem; color: #fff; position: relative; }
-    h2::after { content: ''; position: absolute; bottom: -10px; left: 0; width: 60px; height: 4px; background: linear-gradient(90deg, var(--clr-primary), var(--clr-secondary)); border-radius: 2px; }
-
-    .services-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; margin-top: 2rem; }
-    .service-card { background: rgba(15,15,35,0.8); border: 1px solid rgba(255,255,255,0.05); border-radius: 16px; padding: 2.5rem; transition: transform 0.3s, box-shadow 0.3s; position: relative; }
-    .service-card:hover { transform: translateY(-8px); box-shadow: 0 20px 40px rgba(0,0,0,0.4); border-color: rgba(99,102,241,0.2); }
-    .service-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 4px; background: linear-gradient(90deg, var(--clr-primary), var(--clr-secondary)); border-top-left-radius: 16px; border-top-right-radius: 16px; }
-    .service-icon { width: 40px; height: 40px; margin-bottom: 1.5rem; color: var(--clr-primary); }
-    .service-card h3 { font-size: 1.5rem; margin-bottom: 1rem; color: #fff; }
-    .service-card p { color: var(--clr-light-alt); line-height: 1.4; }
-
-    .section-dark { background: rgba(10,10,26,0.7); border-radius: 20px; padding: 3rem; margin: 2rem 0; }
-    .section-dark ul { list-style: none; padding-left: 0; }
-    .section-dark li { margin-bottom: 1rem; padding-left: 2rem; position: relative; color: var(--clr-light); font-size: 1.1rem; }
-    .section-dark li::before { content: "▸"; position: absolute; left: 0; color: var(--clr-secondary); font-size: 1.4rem; top: 0; }
-
-    .signup-form { display: flex; flex-direction: column; gap: 1.5rem; max-width: 500px; margin: 0 auto; }
-    .form-group { display: flex; flex-direction: column; gap: 0.75rem; }
-    label { font-weight: 600; color: var(--clr-light); }
-    input[type="email"] {
-      padding: 1rem; border: 1px solid rgba(255,255,255,0.1); border-radius: 8px; background: rgba(15,15,35,0.8); color: var(--clr-light);
-      font-size: 1rem; transition: all 0.3s ease;
-    }
-    input[type="email"]:focus { border-color: var(--clr-primary); box-shadow: 0 0 0 3px rgba(99,102,241,0.2); }
-    .checkbox-group { display: flex; align-items: flex-start; gap: 0.75rem; }
-    input[type="checkbox"] { margin-top: 0.25rem; transform: scale(1.2); }
-    button[type="submit"] {
-      background: linear-gradient(135deg, var(--clr-primary), var(--clr-secondary)); color: #fff; border: none; padding: 1rem 2rem; border-radius: 8px;
-      font-size: 1.1rem; font-weight: 600; cursor: pointer; align-self: flex-start; transition: all 0.3s ease; box-shadow: 0 4px 15px rgba(99,102,241,0.3);
-    }
-    button[type="submit"]:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(99,102,241,0.4); }
-    button[type="submit"]:disabled { background: #444; cursor: not-allowed; }
-    small { color: var(--clr-light-alt); }
-
-    footer {
-      background: rgba(10,10,26,0.9); padding: 3rem 0 2rem; margin-top: auto;
-      border-top: 1px solid rgba(255,255,255,0.05); color: var(--clr-muted);
-    }
-    .footer-content { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 2rem; margin-bottom: 2rem; }
-    .footer-bottom { text-align: center; padding-top: 1.5rem; border-top: 1px solid rgba(255,255,255,0.05); }
-    .footer-bottom a { color: var(--clr-secondary); }
-
-    /* Cookie Banner Styles */
-    .cookie-banner {
-      position: fixed; bottom: 0; left: 0; right: 0;
-      background: rgba(10,10,26,0.95); border-top: 1px solid rgba(255,255,255,0.1);
-      padding: 1.5rem; display: none; flex-direction: column; gap: 1rem;
-      box-shadow: 0 -4px 20px rgba(0,0,0,0.3); z-index: 1000; backdrop-filter: blur(10px);
-    }
-    .cookie-banner p { margin: 0; font-size: 0.9rem; color: var(--clr-light); max-width: 1000px; margin: 0 auto; }
-    .cookie-actions { display: flex; gap: 1rem; flex-wrap: wrap; justify-content: center; }
-    .btn-essential, .btn-allow { padding: 0.6rem 1.5rem; border: none; border-radius: 6px; cursor: pointer; font-size: 0.9rem; font-weight: 500; transition: all 0.3s ease; }
-    .btn-essential { background: rgba(255,255,255,0.1); color: var(--clr-light); border: 1px solid rgba(255,255,255,0.2); }
-    .btn-essential:hover { background: rgba(255,255,255,0.2); }
-    .btn-allow { background: var(--clr-secondary); color: #000; font-weight: 600; }
-    .btn-allow:hover { background: #05c391; transform: translateY(-1px); }
-
-    /* Modal Styles */
-    .modal-overlay {
-      position: fixed; top: 0; left: 0; right: 0; bottom: 0;
-      background: rgba(0,0,0,0.8); display: flex; align-items: center; justify-content: center;
-      opacity: 0; visibility: hidden; transition: opacity 0.3s ease; z-index: 2000; padding: 1rem;
-    }
-    .modal-overlay.active { opacity: 1; visibility: visible; }
-    .modal {
-      background: rgba(15,15,35,0.95); padding: 2.5rem; border-radius: 16px; max-width: 700px; width: 100%;
-      max-height: 80vh; overflow-y: auto; position: relative; color: var(--clr-light);
-      border: 1px solid rgba(255,255,255,0.1); backdrop-filter: blur(10px);
-    }
-    .modal h3 { margin-top: 0; font-size: 1.8rem; color: #fff; margin-bottom: 1.5rem; }
-    .modal-close {
-      position: absolute; top: 1rem; right: 1rem; background: none; border: none; font-size: 1.8rem; cursor: pointer;
-      color: var(--clr-muted); width: 40px; height: 40px; display: flex; align-items: center; justify-content: center; border-radius: 50%; transition: all 0.3s ease;
-    }
-    .modal-close:hover { background: rgba(255,255,255,0.1); color: #fff; }
-
-    /* Success message */
-    #form-success { display: none; text-align: center; padding: 2rem; background: rgba(6,214,160,0.1); border: 1px solid rgba(6,214,160,0.3); border-radius: 12px; margin-top: 2rem; }
-    #form-success p { font-size: 1.2rem; color: var(--clr-secondary); margin: 0; }
-
-    /* Language visibility */
-    [data-lang] { display: none; }
-    [data-lang].lang-active { display: block; }
-
-    @media (max-width: 768px) {
-      h1 { font-size: 2.5rem; }
-      h2 { font-size: 2rem; }
-      .hero { padding: 4rem 0 3rem; }
-      .hero h1 { font-size: 2.8rem; }
-      .hero p { font-size: 1.2rem; }
-      nav { flex-direction: column; gap: 1rem; }
-      .cookie-actions { flex-direction: column; }
-      .btn-essential, .btn-allow { width: 100%; }
-      .modal { padding: 1.5rem; margin: 1rem; }
-    }
-  </style>
+    <link rel="icon" type="image/x-icon" href="/static/favicon.ico">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/feather-icons"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vanta@latest/dist/vanta.globe.min.js"></script>
+    <link rel="stylesheet" href="style.css">
 </head>
+<body class="loading"> <!-- Class for pre-loader -->
+    <svg width="0" height="0" style="position: absolute;">
+        <defs>
+            <linearGradient id="gradient-icon" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" stop-color="#6366f1" />
+                <stop offset="100%" stop-color="#10b981" />
+            </linearGradient>
+        </defs>
+    </svg>
 
-<body>
-  <header>
-    <div class="container">
-      <nav>
-        <div class="logo-svg" aria-label="EbX Logo">
-          <svg viewBox="0 0 600 180" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg" role="img">
-            <title>EbX – AI for People. Intelligence for Growth.</title>
-            <defs>
-              <linearGradient id="logoGradient" x1="0%" y1="0%" x2="100%" y2="100%">
-                <stop offset="0%" stop-color="#ffffff" />
-                <stop offset="100%" stop-color="#06d6a0" />
-              </linearGradient>
-              <filter id="glow" x="-50%" y="-50%" width="200%" height="200%">
-                <feDropShadow dx="0" dy="0" stdDeviation="8" flood-color="#06d6a0" flood-opacity="0.5"/>
-              </filter>
-            </defs>
-            <text x="0" y="80" font-family="sans-serif" font-size="80" fill="url(#logoGradient)" filter="url(#glow)">EbX</text>
-            <g data-lang="en" class="lang-active">
-              <text x="0" y="125" font-family="sans-serif" font-size="24" fill="#e2e8f0">AI for People.</text>
-              <text x="0" y="155" font-family="sans-serif" font-size="24" fill="#e2e8f0">Intelligence for Growth.</text>
-            </g>
-            <g data-lang="de">
-              <text x="0" y="125" font-family="sans-serif" font-size="24" fill="#e2e8f0">KI für Menschen.</text>
-              <text x="0" y="155" font-family="sans-serif" font-size="24" fill="#e2e8f0">Intelligenz für Wachstum.</text>
-            </g>
-          </svg>
+    <!-- Header -->
+    <header>
+        <div class="container nav-container">
+            <div class="logo">
+                <!-- NOTE: The correct logo is now shown via CSS -->
+                <img src="logo-dark.jpg" alt="EbX Logo" class="logo-dark">
+                <img src="logo-light.jpg" alt="EbX Logo" class="logo-light">
+            </div>
+            <div class="controls">
+                <button class="lang-toggle" id="langToggle" aria-label="Toggle language">EN</button>
+                <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
+                    <i data-feather="moon" aria-hidden="true"></i>
+                </button>
+            </div>
         </div>
-        <div class="lang-toggle">
-          <button type="button" class="lang-btn active" data-set-lang="en">EN</button>
-          <button type="button" class="lang-btn" data-set-lang="de">DE</button>
-        </div>
-      </nav>
-    </div>
-  </header>
+    </header>
 
-  <main class="container">
+    <!-- Hero Section -->
     <section class="hero">
-      <h1 data-lang="en" class="lang-active">Transforming HR with Intelligent AI</h1>
-      <h1 data-lang="de">HR-Transformation durch intelligente KI</h1>
-
-      <p data-lang="en" class="lang-active">We bridge the gap between cutting-edge AI and human-centric HR workflows to drive sustainable growth.</p>
-      <p data-lang="de">Wir überbrücken die Lücke zwischen modernster KI und menschenzentrierten HR-Workflows für nachhaltiges Wachstum.</p>
-
-      <div class="coming-soon lang-active" data-lang="en">Launching Q3 2026</div>
-      <div class="coming-soon" data-lang="de">Start Q3 2026</div>
+        <div class="vanta-bg" id="vantaBg"></div>
+        <div class="hero-content">
+            <h1 data-lang="en"><span class="hero-gradient">AI for People.</span><br>Intelligence for Growth.</h1>
+            <h1 data-lang="de" style="display: none;"><span class="hero-gradient">KI für Menschen.</span><br>Intelligenz für Wachstum.</h1>
+            <p data-lang="en" class="text-xl text-muted" style="max-width: 600px; margin: 0 auto;">Transforming businesses through human-centric artificial intelligence solutions that drive measurable results</p>
+            <p data-lang="de" class="text-xl text-muted" style="display: none; max-width: 600px; margin: 0 auto;">Unternehmen transformieren durch menschenzentrierte KI-Lösungen, die messbare Ergebnisse liefern</p>
+            <span class="coming-soon">Launching Q1 2025</span>
+        </div>
     </section>
 
-    <section>
-      <h2 data-lang="en" class="lang-active">Our AI Consulting Services</h2>
-      <h2 data-lang="de">Unsere KI-Beratungsleistungen</h2>
-
-      <div class="services-grid">
-        <div class="service-card">
-          <div class="service-icon">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <rect x="3" y="11" width="18" height="10" rx="2" ry="2"></rect>
-              <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
-              <line x1="12" y1="3" x2="12" y2="7"></line>
-            </svg>
-          </div>
-          <h3 data-lang="en" class="lang-active">AI Strategy & Roadmapping</h3>
-          <h3 data-lang="de">KI-Strategie & Roadmapping</h3>
-          <p data-lang="en" class="lang-active">Crafting ethical, scalable AI pathways tailored to your HR organization's needs and goals.</p>
-          <p data-lang="de">Entwicklung ethischer, skalierbarer KI-Pfade, zugeschnitten auf Ihre HR-Organisation.</p>
+    <!-- Services Section -->
+    <section id="services" class="anim-on-scroll">
+        <div class="container">
+            <h2 class="section-title" data-lang="en">Our AI Consulting Services</h2>
+            <h2 class="section-title" data-lang="de" style="display: none;">Unsere KI-Beratungsleistungen</h2>
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="card-border"></div>
+                    <svg class="service-icon" viewBox="0 0 24 24"><path d="M19 3h-4.18C14.4 1.84 13.3 1 12 1s-2.4.84-2.82 2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-7-.25c.22 0 .41.09.55.25.14.16.21.36.21.58 0 .22-.07.42-.21.58-.14.16-.33.25-.55.25s-.41-.09-.55-.25c-.14-.16-.21-.36-.21-.58 0-.22.07-.42.21-.58.14-.16.33-.25.55-.25zM19 19H5V5h2v2h10V5h2v14z"/></svg>
+                    <h3 data-lang="en">AI Strategy & Roadmapping</h3>
+                    <h3 data-lang="de" style="display: none;">KI-Strategie & Roadmapping</h3>
+                    <p data-lang="en">Crafting ethical, scalable AI pathways tailored to your HR organization's needs and goals.</p>
+                    <p data-lang="de" style="display: none;">Entwicklung ethischer, skalierbarer KI-Pfade, die auf die Bedürfnisse und Ziele Ihrer HR-Organisation zugeschnitten sind.</p>
+                </div>
+                <div class="service-card">
+                    <div class="card-border"></div>
+                    <svg class="service-icon" viewBox="0 0 24 24"><path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 16H5V5h14v14zm-8-2h2v-4h4v-2h-4V7h-2v4H7v2h4z"/></svg>
+                    <h3 data-lang="en">Change Management</h3>
+                    <h3 data-lang="de" style="display: none;">Change Management</h3>
+                    <p data-lang="en">Guiding your teams through transformation via training, culture & adoption strategies.</p>
+                    <p data-lang="de" style="display: none;">Begleitung Ihrer Teams durch Transformation mittels Schulungen, Kultur- und Einführungsstrategien.</p>
+                </div>
+                <div class="service-card">
+                    <div class="card-border"></div>
+                    <svg class="service-icon" viewBox="0 0 24 24"><path d="M12 6c3.31 0 6 2.69 6 6s-2.69 6-6 6-6-2.69-6-6 2.69-6 6-6zm0-2c-4.42 0-8 3.58-8 8s3.58 8 8 8 8-3.58 8-8-3.58-8-8-8zm-1 7H8v2h3v3h2v-3h3v-2h-3V8h-2v3z"/></svg>
+                    <h3 data-lang="en">HR Process Automation</h3>
+                    <h3 data-lang="de" style="display: none;">HR-Prozessautomatisierung</h3>
+                    <p data-lang="en">Intelligent automation for recruitment, onboarding, employee services, and talent workflows.</p>
+                    <p data-lang="de" style="display: none;">Intelligente Automatisierung für Rekrutierung, Onboarding, Mitarbeiterservice und Talent-Workflows.</p>
+                </div>
+                <div class="service-card">
+                    <div class="card-border"></div>
+                    <svg class="service-icon" viewBox="0 0 24 24"><path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 16H5V5h14v14zM7 12h2v5H7zm4-7h2v12h-2zm4 5h2v7h-2z"/></svg>
+                    <h3 data-lang="en">AI Implementation & Integration</h3>
+                    <h3 data-lang="de" style="display: none;">KI-Implementierung & Integration</h3>
+                    <p data-lang="en">Seamless integration of AI solutions into your existing HR systems and workflows.</p>
+                    <p data-lang="de" style="display: none;">Nahtlose Integration von KI-Lösungen in Ihre bestehenden HR-Systeme und Workflows.</p>
+                </div>
+            </div>
         </div>
-
-        <div class="service-card">
-          <div class="service-icon">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <polyline points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polyline>
-            </svg>
-          </div>
-          <h3 data-lang="en" class="lang-active">HR Process Automation</h3>
-          <h3 data-lang="de">HR Prozessautomatisierung</h3>
-          <p data-lang="en" class="lang-active">Intelligent automation for recruitment, onboarding, employee services, and talent workflows.</p>
-          <p data-lang="de">Intelligente Automatisierung für Recruiting, Onboarding, Mitarbeiterservices und Talent-Workflows.</p>
-        </div>
-
-        <div class="service-card">
-          <div class="service-icon">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <polyline points="23 4 23 10 17 10"></polyline>
-              <path d="M20.49 15a9 9 0 1 1-9.95-9.95"></path>
-            </svg>
-          </div>
-          <h3 data-lang="en" class="lang-active">Change Management</h3>
-          <h3 data-lang="de">Change Management</h3>
-          <p data-lang="en" class="lang-active">Guiding your teams through transformation via training, culture & adoption strategies.</p>
-          <p data-lang="de">Begleitung Ihrer Teams durch Transformation mit Schulung, Kultur & Adoptionsstrategien.</p>
-        </div>
-
-        <div class="service-card">
-          <div class="service-icon">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M12 20h9"></path>
-              <path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"></path>
-            </svg>
-          </div>
-          <h3 data-lang="en" class="lang-active">AI Implementation & Integration</h3>
-          <h3 data-lang="de">KI-Implementierung & Integration</h3>
-          <p data-lang="en" class="lang-active">Seamless integration of AI solutions into your existing HR systems and workflows.</p>
-          <p data-lang="de">Nahtlose Integration von KI-Lösungen in Ihre bestehenden HR-Systeme und Workflows.</p>
-        </div>
-      </div>
     </section>
 
-    <div class="section-dark">
-      <h2 data-lang="en" class="lang-active">Why Choose EbX?</h2>
-      <h2 data-lang="de">Warum EbX wählen?</h2>
-      <ul>
-        <li data-lang="en" class="lang-active"><strong>HR Experts:</strong> Deep experience in HR, compliance, & people operations.</li>
-        <li data-lang="de"><strong>HR-Experten:</strong> Tiefe Erfahrung in HR, Compliance & People Operations.</li>
-        <li data-lang="en" class="lang-active"><strong>Privacy-Centric AI:</strong> Solutions built GDPR-first, data protection by design.</li>
-        <li data-lang="de"><strong>Datenschutzzentrierte KI:</strong> Lösungen mit DSGVO im Fokus, Datenschutz durch Design.</li>
-        <li data-lang="en" class="lang-active"><strong>Outcome Driven:</strong> Emphasis on measurable impact over theory.</li>
-        <li data-lang="de"><strong>Ergebnisorientiert:</strong> Fokus auf messbare Wirkung statt Theorie.</li>
-        <li data-lang="en" class="lang-active"><strong>Scalable Architecture:</strong> Designs that scale with your growth.</li>
-        <li data-lang="de"><strong>Skalierbare Architektur:</strong> Lösungen, die mit Ihrem Wachstum skalieren.</li>
-      </ul>
-    </div>
-
-    <section class="section-dark">
-      <h2 data-lang="en" class="lang-active">Join Our Journey</h2>
-      <h2 data-lang="de">Begleiten Sie uns</h2>
-
-      <p data-lang="en" class="lang-active" style="margin-bottom:2rem; font-size:1.2rem;">
-        Be the first to know when we launch and receive exclusive insights into AI & HR.
-      </p>
-      <p data-lang="de" style="margin-bottom:2rem; font-size:1.2rem;">
-        Seien Sie der Erste, der von unserem Start erfährt – einschließlich exklusiver KI-HR-Einblicke.
-      </p>
-
-      <!-- PURE-AJAX FORM -->
-      <form id="signup-form" class="signup-form" novalidate data-endpoint="https://formspree.io/f/mrbyeddn">
-        <div class="form-group">
-          <label for="email" data-lang="en" class="lang-active">Email Address</label>
-          <label for="email" data-lang="de">E-Mail-Adresse</label>
-          <input type="email" id="email" name="email" required
-                 pattern="[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}$"
-                 placeholder="your.email@company.com">
+    <!-- Why Us Section -->
+    <section id="why-us" class="anim-on-scroll">
+        <div class="container">
+            <h2 class="section-title" data-lang="en">Why Choose EbX</h2>
+            <h2 class="section-title" data-lang="de" style="display: none;">Warum EbX wählen</h2>
+            <div class="why-us-grid">
+                <div class="feature feature-main">
+                    <div class="feature-content">
+                        <svg class="service-icon" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm4.59-12.42L10 14.17l-2.59-2.58L6 13l4 4 8-8z"/></svg>
+                        <h3 data-lang="en">Proven Expertise</h3>
+                        <h3 data-lang="de" style="display: none;">Bewährte Expertise</h3>
+                        <p data-lang="en">Years of experience delivering successful AI implementations</p>
+                        <p data-lang="de" style="display: none;">Jahrelange Erfahrung in der erfolgreichen Implementierung von KI-Lösungen</p>
+                    </div>
+                </div>
+                <div class="feature feature-main">
+                    <div class="feature-content">
+                        <svg class="service-icon" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm-1-13h2v6h-2zm0 8h2v2h-2z"/></svg>
+                        <h3 data-lang="en">Human-Centered Approach</h3>
+                        <h3 data-lang="de" style="display: none;">Menschenzentrierter Ansatz</h3>
+                        <p data-lang="en">Technology that enhances human capabilities, not replaces them</p>
+                        <p data-lang="de" style="display: none;">Technologie, die menschliche Fähigkeiten erweitert, nicht ersetzt</p>
+                    </div>
+                </div>
+                <div class="feature feature-main">
+                    <div class="feature-content">
+                        <svg class="service-icon" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm4-4H8v-2h8v2z"/></svg>
+                        <h3 data-lang="en">Scalable Solutions</h3>
+                        <h3 data-lang="de" style="display: none;">Skalierbare Lösungen</h3>
+                        <p data-lang="en">Future-proof architectures that grow with your business</p>
+                        <p data-lang="de" style="display: none;">Zukunftssichere Architekturen, die mit Ihrem Unternehmen wachsen</p>
+                    </div>
+                </div>
+            </div>
         </div>
-        <div class="form-group">
-          <div class="checkbox-group">
-            <input type="checkbox" id="consent" name="consent" required>
-            <label for="consent">
-              <span data-lang="en" class="lang-active">I consent to receive email updates from EbX about our launch.</span>
-              <span data-lang="de">Ich stimme zu, E-Mail-Updates von EbX über unseren Start zu erhalten.</span>
-            </label>
-          </div>
-        </div>
-        <button type="submit" data-lang="en" class="lang-active">Get Updates</button>
-        <button type="submit" data-lang="de">Updates erhalten</button>
-      </form>
-
-      <div id="form-success">
-        <p data-lang="en" class="lang-active">✅ Thank you! We'll be in touch soon.</p>
-        <p data-lang="de">✅ Vielen Dank! Wir melden uns in Kürze.</p>
-      </div>
     </section>
-  </main>
 
-  
-      <div class="footer-bottom">
-        <p>
-          <small data-lang="en" class="lang-active">© 2025 EbX. All rights reserved. | <a href="#" id="open-privacy-footer">Privacy Policy</a></small>
-          <small data-lang="de">© 2025 EbX. Alle Rechte vorbehalten. | <a href="#" id="open-privacy-footer">Datenschutzerklärung</a></small>
-        </p>
-        <p><a href="#" id="open-impressum">Impressum</a></p>
-      </div>
+    <!-- Signup Section -->
+    <section id="signup" class="anim-on-scroll">
+        <div class="container">
+            <h2 class="section-title" data-lang="en">Stay Informed</h2>
+            <h2 class="section-title" data-lang="de" style="display: none;">Bleiben Sie informiert</h2>
+            <div class="signup-form">
+                <form id="emailForm" action="https://formspree.io/f/your-form-id" method="POST">
+                    <div class="form-group">
+                        <label for="email" data-lang="en">Email Address</label>
+                        <label for="email" data-lang="de" style="display: none;">E-Mail-Adresse</label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+                    <div class="form-group">
+                        <div class="checkbox-group">
+                            <input type="checkbox" id="consent" name="consent" required>
+                            <label for="consent" data-lang="en">I agree to receive updates about EbX services</label>
+                            <label for="consent" data-lang="de" style="display: none;">Ich stimme zu, Updates zu EbX-Dienstleistungen zu erhalten</label>
+                        </div>
+                    </div>
+                    <button type="submit" class="btn" id="submitBtn" disabled>Subscribe</button>
+                </form>
+                <div class="success-message" id="successMessage" data-lang="en">Thank you for subscribing!</div>
+                <div class="success-message" id="successMessageDE" data-lang="de" style="display: none;">Vielen Dank für Ihre Anmeldung!</div>
+                <div class="error-message" id="errorMessage" data-lang="en">An error occurred. Please try again.</div>
+                <div class="error-message" id="errorMessageDE" data-lang="de" style="display: none;">Ein Fehler ist aufgetreten. Bitte versuchen Sie es erneut.</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content" style="text-align: center;">
+                <div class="footer-links" style="justify-content: center; margin-bottom: 1rem;">
+                    <a href="#" class="privacy-link" data-lang="en">Privacy Policy</a>
+                    <a href="#" class="privacy-link" data-lang="de" style="display: none;">Datenschutz</a>
+                    <a href="#" class="impressum-link" data-lang="en">Impressum</a>
+                    <a href="#" class="impressum-link" data-lang="de" style="display: none;">Impressum</a>
+                </div>
+            </div>
+            <div class="footer-bottom" style="margin-top: 2rem; padding-top: 1rem; border-top: 1px solid var(--clr-muted); text-align: center; font-size: 0.9rem; color: var(--clr-muted);">
+                <p data-lang="en">© 2024 EbX</p>
+                <p data-lang="de" style="display: none;">© 2024 EbX</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Modals -->
+    <div class="modal" id="privacyModal">
+        <div class="modal-content">
+            <button class="close-modal" id="closePrivacy">&times;</button>
+            <div data-lang="en">
+                <h2>Privacy Policy</h2>
+                <p>Last updated: October 1, 2025</p>
+                <h4>1. General Information</h4>
+                <p>The following gives a simple overview of what happens to your personal information when you visit our website. The responsible party for data processing on this website (the "controller") is:</p>
+                <p>Christian Eberle (EbX)<br>Bettina-von-Arnim Str. 17<br>79189 Bad Krozingen<br>Email: info@christian-eberle.com</p>
+                <h4>2. Your Rights as a Data Subject</h4>
+                <p>You have the following rights under the GDPR:</p>
+                <ul><li><strong>Right of access (Art. 15 GDPR):</strong> You have the right to request information about your personal data processed by us.</li><li><strong>Right to rectification (Art. 16 GDPR):</strong> You have the right to demand the correction of incorrect or incomplete personal data stored by us.</li><li><strong>Right to erasure (Art. 17 GDPR):</strong> You have the right to request the deletion of your personal data stored by us.</li><li><strong>Right to restriction of processing (Art. 18 GDPR):</strong> You have the right to request the restriction of the processing of your personal data.</li><li><strong>Right to data portability (Art. 20 GDPR):</strong> You have the right to receive your personal data in a structured, common and machine-readable format.</li><li><strong>Right to object (Art. 21 GDPR):</strong> You have the right to object to the processing of your personal data based on legitimate interests.</li><li><strong>Right to withdraw consent (Art. 7(3) GDPR):</strong> You have the right to withdraw your consent at any time.</li><li><strong>Right to lodge a complaint (Art. 77 GDPR):</strong> You have the right to complain to a supervisory authority.</li></ul>
+                <h4>3. Data Collection on Our Website</h4>
+                <p><strong>Server Log Files & Hosting</strong></p>
+                <p>Our website is hosted by IONOS SE, Elgendorfer Str. 57, 56410 Montabaur, Germany. The provider of the pages automatically collects and stores information in so-called server log files, which your browser automatically transmits. These are: Browser type and version, operating system used, referrer URL, host name of the accessing computer, time of the server request, and IP address. This data is not merged with other data sources. The basis for data processing is Art. 6(1)(f) GDPR, our legitimate interest in the secure and efficient provision of our website. We have concluded a data processing agreement (DPA) with IONOS.</p>
+                <p><strong>Contact Form (via Formspree)</strong></p>
+                <p>If you use our contact form to subscribe to updates, your email address and consent status are transmitted to Formspree, Inc., a US-based service, for processing. Formspree may also collect your IP address. The data processing is based on your explicit consent (Art. 6(1)(a) GDPR). You can revoke this consent at any time. For more information, please see Formspree's privacy policy: <a href="https://formspree.io/legal/privacy-policy/" target="_blank" rel="noopener noreferrer">https://formspree.io/legal/privacy-policy/</a>.</p>
+                <p><strong>Cookies & Local Storage</strong></p>
+                <p>Our website uses local storage to save your preferences for language and theme (light/dark mode). These are technically necessary to provide the service you have requested and are stored based on § 25(2) TTDSG. We also use a cookie to store your consent decision regarding optional features. This is also technically necessary.</p>
+                <p><strong>Plausible Analytics</strong></p>
+                <p>If you provide your consent ("Allow Optional Features"), we use the privacy-friendly web analysis service Plausible Analytics. Plausible does not use cookies and does not collect any personal data. All data, such as referral sources, top pages, and device information, is collected anonymously. The processing is based on your consent (Art. 6(1)(a) GDPR and § 25(1) TTDSG). You can find more information here: <a href="https://plausible.io/data-policy" target="_blank" rel="noopener noreferrer">https://plausible.io/data-policy</a>.</p>
+                <p><strong>Content Delivery Networks (CDNs)</strong></p>
+                <p>This site uses external libraries (Tailwind CSS, Feather Icons, Vanta.js) hosted on CDNs (e.g., Cloudflare, JSDelivr). When you access our site, your browser requests these files, sending your IP address to the CDN provider. This is based on our legitimate interest (Art. 6(1)(f) GDPR) in a fast, secure, and efficient delivery of our website content.</p>
+            </div>
+            <div data-lang="de" style="display: none;">
+                <h2>Datenschutzerklärung</h2>
+                <p>Stand: 01. Oktober 2025</p>
+                <h4>1. Allgemeines</h4>
+                <p>Die folgenden Hinweise geben einen einfachen Überblick darüber, was mit Ihren personenbezogenen Daten passiert, wenn Sie unsere Website besuchen. Verantwortliche Stelle für die Datenverarbeitung auf dieser Website ist:</p>
+                <p>Christian Eberle (EbX)<br>Bettina-von-Arnim Str. 17<br>79189 Bad Krozingen<br>E-Mail: info@christian-eberle.com</p>
+                <h4>2. Ihre Rechte als betroffene Person</h4>
+                <p>Ihnen stehen gemäß der DSGVO folgende Rechte zu:</p>
+                <ul><li><strong>Auskunftsrecht (Art. 15 DSGVO):</strong> Sie haben das Recht, Auskunft über Ihre von uns verarbeiteten personenbezogenen Daten zu verlangen.</li><li><strong>Recht auf Berichtigung (Art. 16 DSGVO):</strong> Sie haben das Recht, die Berichtigung unrichtiger oder die Vervollständigung Ihrer bei uns gespeicherten Daten zu verlangen.</li><li><strong>Recht auf Löschung (Art. 17 DSGVO):</strong> Sie haben das Recht, die Löschung Ihrer bei uns gespeicherten personenbezogenen Daten zu verlangen.</li><li><strong>Recht auf Einschränkung der Verarbeitung (Art. 18 DSGVO):</strong> Sie haben das Recht, die Einschränkung der Verarbeitung Ihrer Daten zu verlangen.</li><li><strong>Recht auf Datenübertragbarkeit (Art. 20 DSGVO):</strong> Sie haben das Recht, Ihre Daten in einem strukturierten, gängigen und maschinenlesbaren Format zu erhalten.</li><li><strong>Widerspruchsrecht (Art. 21 DSGVO):</strong> Sie haben das Recht, Widerspruch gegen die Verarbeitung Ihrer Daten auf Grundlage berechtigter Interessen einzulegen.</li><li><strong>Recht auf Widerruf der Einwilligung (Art. 7 Abs. 3 DSGVO):</strong> Sie haben das Recht, eine erteilte Einwilligung jederzeit zu widerrufen.</li><li><strong>Beschwerderecht (Art. 77 DSGVO):</strong> Sie haben das Recht, sich bei einer Aufsichtsbehörde zu beschweren.</li></ul>
+                <h4>3. Datenerfassung auf unserer Website</h4>
+                <p><strong>Server-Log-Dateien & Hosting</strong></p>
+                <p>Unsere Website wird bei der IONOS SE, Elgendorfer Str. 57, 56410 Montabaur, Deutschland, gehostet. Der Provider der Seiten erhebt und speichert automatisch Informationen in so genannten Server-Log-Dateien, die Ihr Browser automatisch übermittelt. Dies sind: Browsertyp und -version, verwendetes Betriebssystem, Referrer URL, Hostname des zugreifenden Rechners, Uhrzeit der Serveranfrage und IP-Adresse. Eine Zusammenführung dieser Daten mit anderen Datenquellen wird nicht vorgenommen. Grundlage für die Datenverarbeitung ist Art. 6 Abs. 1 lit. f DSGVO, unser berechtigtes Interesse an der sicheren und effizienten Bereitstellung unserer Website. Wir haben einen Vertrag zur Auftragsverarbeitung (AVV) mit IONOS geschlossen.</p>
+                <p><strong>Kontaktformular (via Formspree)</strong></p>
+                <p>Wenn Sie unser Kontaktformular für Updates nutzen, werden Ihre E-Mail-Adresse und Ihr Einwilligungsstatus zur Verarbeitung an den US-Dienstleister Formspree, Inc. übermittelt. Formspree kann dabei auch Ihre IP-Adresse erfassen. Die Datenverarbeitung erfolgt auf Grundlage Ihrer ausdrücklichen Einwilligung (Art. 6 Abs. 1 lit. a DSGVO). Sie können diese Einwilligung jederzeit widerrufen. Weitere Informationen finden Sie in der Datenschutzerklärung von Formspree: <a href="https://formspree.io/legal/privacy-policy/" target="_blank" rel="noopener noreferrer">https://formspree.io/legal/privacy-policy/</a>.</p>
+                <p><strong>Cookies & Local Storage</strong></p>
+                <p>Unsere Website nutzt den Local Storage, um Ihre Präferenzen für Sprache und Theme (Hell-/Dunkelmodus) zu speichern. Diese sind technisch notwendig, um den von Ihnen angeforderten Dienst bereitzustellen und werden auf Grundlage von § 25 Abs. 2 TTDSG gespeichert. Wir verwenden zudem ein Cookie, um Ihre Einwilligungsentscheidung bezüglich optionaler Funktionen zu speichern. Auch dies ist technisch notwendig.</p>
+                <p><strong>Plausible Analytics</strong></p>
+                <p>Sofern Sie Ihre Einwilligung erteilen ("Optionale Funktionen erlauben"), nutzen wir den datenschutzfreundlichen Webanalysedienst Plausible Analytics. Plausible verwendet keine Cookies und sammelt keine personenbezogenen Daten. Alle Daten, wie Verweisquellen, Top-Seiten und Geräteinformationen, werden anonymisiert erfasst. Die Verarbeitung erfolgt auf Grundlage Ihrer Einwilligung (Art. 6 Abs. 1 lit. a DSGVO und § 25 Abs. 1 TTDSG). Weitere Informationen finden Sie hier: <a href="https://plausible.io/data-policy" target="_blank" rel="noopener noreferrer">https://plausible.io/data-policy</a>.</p>
+                <p><strong>Content Delivery Networks (CDNs)</strong></p>
+                <p>Diese Seite nutzt externe Bibliotheken (Tailwind CSS, Feather Icons, Vanta.js), die über CDNs (z.B. Cloudflare, JSDelivr) gehostet werden. Bei Aufruf unserer Seite fordert Ihr Browser diese Dateien an und übermittelt dabei Ihre IP-Adresse an den CDN-Anbieter. Dies geschieht auf Grundlage unseres berechtigten Interesses (Art. 6 Abs. 1 lit. f DSGVO) an einer schnellen, sicheren und effizienten Auslieferung unserer Website-Inhalte.</p>
+            </div>
+        </div>
     </div>
-  </footer>
-
-  <!-- Impressum / Legal Notice Modal -->
-  <div id="impressum-modal" class="modal-overlay">
-    <div class="modal">
-      <button class="modal-close" aria-label="Close">&times;</button>
-      <h3 data-lang="en" class="lang-active">Legal Notice / Impressum</h3>
-      <h3 data-lang="de">Impressum</h3>
-      
-      <div data-lang="en" class="lang-active">
-        <p><strong>This website is published by:</strong></p>
-        <p>
-          EbX<br>
-          Christian Eberle<br>
-          Bettina-von-Arnim Str. 17<br>
-          79189 Bad Krozingen, Germany<br>
-          Email: <a href="mailto:info@christian-eberle.com">info@christian-eberle.com</a>
-        </p>
-
-        <p><strong>Responsible for content:</strong><br>Christian Eberle</p>
-
-        <p><strong>Service Provider:</strong><br>
-          EbX<br>
-          Christian Eberle<br>
-          Bettina-von-Arnim Str. 17<br>
-          79189 Bad Krozingen, Germany
-        </p>
-
-        <p><strong>Technical Implementation / Hosting:</strong><br>
-          IONOS SE<br>
-          Elgendorfer Str. 57<br>
-          56410 Montabaur, Germany
-        </p>
-
-        <h4>Disclaimer</h4>
-        <p><strong>1. Content of Online Offer</strong><br>
-          The contents of our website are intended to facilitate access to information about our services and provide an accurate picture of EbX's activities. While we pay great attention to the accuracy, timeliness, completeness, comprehensibility and availability of the information provided, EbX assumes no liability for this.
-        </p>
-
-        <p><strong>2. External Links</strong><br>
-          Direct or indirect references to third-party content were created by EbX to the best of our knowledge and with the utmost care. EbX expressly does not adopt the content of third-party websites that are linked to its own Internet presence as its own.
-        </p>
-
-        <p><strong>3. Copyright</strong><br>
-          All content and structures of this website are protected by copyright. Publication on the World Wide Web does not constitute consent for any other use by third parties.
-        </p>
-
-        <p><strong>4. Data Protection</strong><br>
-          The use of contact data published within the framework of the imprint or comparable information such as postal addresses, telephone and fax numbers as well as email addresses by third parties for sending unsolicited information or advertising is not permitted.
-        </p>
-
-        <p><strong>5. Legal Validity</strong><br>
-          This disclaimer is to be regarded as part of the internet publication which you were referred from. If sections or individual terms of this statement are not legal or correct, the content or validity of the other parts remain uninfluenced by this fact.
-        </p>
-      </div>
-
-      <div data-lang="de">
-        <p><strong>Dieses Internetangebot wird herausgegeben von:</strong></p>
-        <p>
-          EbX<br>
-          Christian Eberle<br>
-          Bettina-von-Arnim Str. 17<br>
-          79189 Bad Krozingen, Deutschland<br>
-          E-Mail: <a href="mailto:info@christian-eberle.com">info@christian-eberle.com</a>
-        </p>
-
-        <p><strong>Verantwortlich für den Inhalt:</strong><br>Christian Eberle</p>
-
-        <p><strong>Diensteanbieter:</strong><br>
-          EbX<br>
-          Christian Eberle<br>
-          Bettina-von-Arnim Str. 17<br>
-          79189 Bad Krozingen, Deutschland
-        </p>
-
-        <p><strong>Technische Umsetzung / Hosting:</strong><br>
-          IONOS SE<br>
-          Elgendorfer Str. 57<br>
-          56410 Montabaur, Deutschland
-        </p>
-
-        <h4>Haftungsausschluss</h4>
-        <p><strong>1. Inhalt des Onlineangebotes</strong><br>
-          Die Inhalte unserer Website sollen Ihnen den Zugang zu Informationen über unsere Dienstleistungen erleichtern und ein zutreffendes Bild von den Tätigkeiten von EbX vermitteln. Auf die Richtigkeit, Aktualität, Vollständigkeit, Verständlichkeit und Verfügbarkeit der bereitgestellten Informationen wird zwar sehr sorgfältig geachtet, dennoch übernimmt EbX hierfür keinerlei Gewähr.
-        </p>
-
-        <p><strong>2. Externe Links</strong><br>
-          Die auf diesen Seiten evtl. vorhandenen direkten oder indirekten Verweise zu Inhalten von Internetseiten Dritter wurden durch EbX nach bestem Wissen und unter Beachtung größtmöglicher Sorgfalt erstellt. EbX macht sich den Inhalt von Internetseiten Dritter, die mit der eigenen Internetpräsenz verlinkt sind, insoweit ausdrücklich nicht zu eigen.
-        </p>
-
-        <p><strong>3. Urheberrecht</strong><br>
-          Alle Inhalte und Strukturen dieser Website sind urheberrechtlich geschützt. Die Veröffentlichung im World Wide Web bedeutet keine Einverständniserklärung für eine anderweitige Nutzung durch Dritte.
-        </p>
-
-        <p><strong>4. Datenschutz</strong><br>
-          Die Nutzung der im Rahmen des Impressums oder vergleichbarer Angaben veröffentlichten Kontaktdaten wie Postanschriften, Telefon- und Faxnummern sowie E-Mail-Adressen durch Dritte zur Übersendung von nicht ausdrücklich angeforderten Informationen oder Werbung ist nicht gestattet.
-        </p>
-
-        <p><strong>5. Rechtswirksamkeit</strong><br>
-          Dieser Haftungsausschluss ist als Teil des Internetangebotes zu betrachten, von dem aus auf diese Seite verwiesen wurde. Sofern Teile oder einzelne Formulierungen dieses Textes der geltenden Rechtslage nicht, nicht mehr oder nicht vollständig entsprechen sollten, bleiben die übrigen Teile des Dokumentes in ihrem Inhalt und ihrer Gültigkeit davon unberührt.
-        </p>
-      </div>
+    <div class="modal" id="impressumPanel">
+        <div class="modal-content">
+            <button class="close-modal" id="closeImpressum">&times;</button>
+            <div data-lang="en">
+                <h2>Legal Notice (Impressum)</h2>
+                <p>Information according to § 5 TMG (German Telemedia Act):</p>
+                <p>EbX<br>Christian Eberle<br>Bettina-von-Arnim Str. 17<br>79189 Bad Krozingen<br>Germany</p>
+                <p><strong>Represented by:</strong><br>Christian Eberle</p>
+                <p><strong>Contact:</strong><br>Email: info@christian-eberle.com</p>
+                <p><strong>EU Dispute Resolution:</strong><br>The European Commission provides a platform for online dispute resolution (OS): <a href="https://ec.europa.eu/consumers/odr/" target="_blank" rel="noopener noreferrer">https://ec.europa.eu/consumers/odr/</a>.<br>You can find our email address in the legal notice above. We are not willing or obliged to participate in dispute resolution proceedings before a consumer arbitration board.</p>
+            </div>
+            <div data-lang="de" style="display: none;">
+                <h2>Impressum</h2>
+                <p>Angaben gemäß § 5 TMG:</p>
+                <p>EbX<br>Christian Eberle<br>Bettina-von-Arnim Str. 17<br>79189 Bad Krozingen</p>
+                <p><strong>Vertreten durch:</strong><br>Christian Eberle</p>
+                <p><strong>Kontakt:</strong><br>E-Mail: info@christian-eberle.com</p>
+                <p><strong>EU-Streitschlichtung:</strong><br>Die Europäische Kommission stellt eine Plattform zur Online-Streitbeilegung (OS) bereit: <a href="https://ec.europa.eu/consumers/odr/" target="_blank" rel="noopener noreferrer">https://ec.europa.eu/consumers/odr/</a>.<br>Unsere E-Mail-Adresse finden Sie oben im Impressum. Wir sind nicht bereit oder verpflichtet, an Streitbeilegungsverfahren vor einer Verbraucherschlichtungsstelle teilzunehmen.</p>
+            </div>
+        </div>
     </div>
-  </div>
 
-  <!-- Cookie Banner -->
-  <div id="cookie-banner" class="cookie-banner">
-    <div class="container">
-      <p data-lang="en" class="lang-active">
-        We use essential cookies only. Optional features (e.g. analytics) will run only with your consent. <a href="#" id="open-privacy">Privacy Policy</a>
-      </p>
-      <p data-lang="de">
-        Wir verwenden nur notwendige Cookies. Optionale Funktionen (z. B. Analytics) werden nur mit Ihrer Zustimmung aktiviert. <a href="#" id="open-privacy">Datenschutzerklärung</a>
-      </p>
-      <div class="cookie-actions">
-        <button class="btn-essential" data-lang="en">Essential Only</button>
-        <button class="btn-essential" data-lang="de">Nur notwendig</button>
-        <button class="btn-allow" data-lang="en">Allow Optional</button>
-        <button class="btn-allow" data-lang="de">Optionale erlauben</button>
-      </div>
+    <!-- Cookie Banner -->
+    <div class="cookie-banner" id="cookieBanner">
+        <div>
+            <p data-lang="en">We use cookies to enhance your experience. Choose your preference:</p>
+            <p data-lang="de" style="display: none;">Wir verwenden Cookies, um Ihr Erlebnis zu verbessern. Wählen Sie Ihre Präferenz:</p>
+        </div>
+        <div class="cookie-buttons">
+            <button class="btn cookie-btn" data-consent="essential" data-lang="en">Essential Only</button>
+            <button class="btn cookie-btn" data-consent="essential" data-lang="de" style="display: none;">Nur notwendige</button>
+            <button class="btn cookie-btn" data-consent="all" data-lang="en">Allow Optional Features</button>
+            <button class="btn cookie-btn" data-consent="all" data-lang="de" style="display: none;">Optionale Funktionen erlauben</button>
+        </div>
     </div>
-  </div>
 
-  <!-- Privacy / Datenschutzerklärung Modal -->
-  <div id="privacy-modal" class="modal-overlay">
-    <div class="modal">
-      <button class="modal-close" aria-label="Close">&times;</button>
-      <h3 data-lang="en" class="lang-active">Privacy Policy</h3>
-      <h3 data-lang="de">Datenschutzerklärung</h3>
-      <p data-lang="en" class="lang-active">
-        This site is hosted by IONOS (Germany). Server logs may capture your IP address and user agent for security reasons.<br><br>
-        We use Formspree to process form submissions. When you submit your email, we collect it together with your consent for updates.<br><br>
-        Data is stored for up to 12 months unless you ask for earlier deletion. You have rights to access, correct, erase, restrict, portability, and to lodge a complaint with a supervisory authority.
-      </p>
-      <p data-lang="de">
-        Diese Seite wird bei IONOS (Deutschland) gehostet. Server-Logs können Ihre IP-Adresse und Ihren User-Agent zu Sicherheitszwecken erfassen.<br><br>
-        Wir nutzen Formspree, um Formulardaten zu verarbeiten. Wenn Sie Ihre E-Mail einreichen, wird sie zusammen mit Ihrer Einwilligung zur Kontaktaufnahme erhoben.<br><br>
-        Daten werden bis zu 12 Monate gespeichert, sofern Sie keine frühere Löschung beantragen. Sie haben Rechte auf Auskunft, Berichtigung, Löschung, Einschränkung, Übertragbarkeit und können eine Beschwerde bei der Aufsichtsbehörde einreichen.
-      </p>
-    </div>
-  </div>
+    <!-- Back to Top Button -->
+    <button id="backToTopBtn" aria-label="Back to top">
+        <i data-feather="arrow-up"></i>
+    </button>
 
-  <script nonce="ebx-2025">
-    'use strict';
-
-    // AJAX submission handler
-    async function handleSubmit(event) {
-      event.preventDefault();
-      event.stopPropagation();
-
-      const form = event.target;
-      const endpoint = form.dataset.endpoint;
-      const submitBtn = form.querySelector('button[type="submit"].lang-active') || form.querySelector('button[type="submit"]');
-
-      const emailInput = document.getElementById('email');
-      const consentCheckbox = document.getElementById('consent');
-      const lang = localStorage.getItem('site-lang') === 'de' ? 'de' : 'en';
-
-      if (!consentCheckbox.checked) {
-        alert(lang === 'de' ? 'Bitte akzeptieren Sie die Datenschutzbestimmungen.' : 'Please accept the privacy terms.');
-        return false;
-      }
-      if (!emailInput.validity.valid) {
-        alert(lang === 'de' ? 'Bitte geben Sie eine gültige E-Mail-Adresse ein.' : 'Please enter a valid email address.');
-        return false;
-      }
-
-      if (submitBtn) submitBtn.disabled = true;
-
-      try {
-        const fd = new FormData(form);
-        const resp = await fetch(endpoint, {
-          method: 'POST',
-          headers: { 'Accept': 'application/json' },
-          body: fd
-        });
-
-        if (resp.ok) {
-          form.reset();
-          form.style.display = 'none';
-          document.getElementById('form-success').style.display = 'block';
-        } else {
-          alert(lang === 'de'
-            ? 'Etwas ist schief gelaufen. Bitte versuchen Sie es später erneut.'
-            : 'Something went wrong. Please try again later.');
-        }
-      } catch (e) {
-        alert(lang === 'de'
-          ? 'Netzwerkfehler. Bitte versuchen Sie es erneut.'
-          : 'Network error. Please try again.');
-      } finally {
-        if (submitBtn) submitBtn.disabled = false;
-      }
-
-      return false;
-    }
-
-    document.addEventListener('DOMContentLoaded', function() {
-      const CONSENT_VERSION = 'v2'; // bump to re-show banner after changes
-
-      const langBtns = document.querySelectorAll('.lang-btn');
-      const allTrans = document.querySelectorAll('[data-lang]');
-      const banner = document.getElementById('cookie-banner');
-      const btnEss = document.querySelectorAll('.btn-essential');
-      const btnAll = document.querySelectorAll('.btn-allow');
-      const privacyModal = document.getElementById('privacy-modal');
-      const impressumModal = document.getElementById('impressum-modal');
-      const openPrivacyLinks = document.querySelectorAll('#open-privacy, #open-privacy-footer');
-      const openImpressumLink = document.getElementById('open-impressum');
-      const closeModals = document.querySelectorAll('.modal-close');
-      const form = document.getElementById('signup-form');
-
-      // Language switching (EN default)
-      function setLang(lang) {
-        allTrans.forEach(el => el.classList.remove('lang-active'));
-        document.querySelectorAll(`[data-lang="${lang}"]`).forEach(el => el.classList.add('lang-active'));
-        langBtns.forEach(b => b.classList.toggle('active', b.getAttribute('data-set-lang') === lang));
-        localStorage.setItem('site-lang', lang);
-        document.title = (lang === 'de')
-          ? 'EbX – KI für Menschen. Intelligenz für Wachstum.'
-          : 'EbX – AI for People. Intelligence for Growth.';
-      }
-      const stored = localStorage.getItem('site-lang');
-      setLang(stored === 'de' ? 'de' : 'en');
-      langBtns.forEach(btn => {
-        btn.addEventListener('click', function(e) {
-          e.preventDefault();
-          setLang(this.getAttribute('data-set-lang'));
-        });
-      });
-
-      // Cookie banner (versioned show logic)
-      const savedConsent = localStorage.getItem('cookie-consent');
-      const savedVersion = localStorage.getItem('cookie-consent-version');
-      if (!savedConsent || savedVersion !== CONSENT_VERSION) {
-        banner.style.display = 'flex';
-      }
-
-      function acceptConsent(value) {
-        localStorage.setItem('cookie-consent', value);
-        localStorage.setItem('cookie-consent-version', CONSENT_VERSION);
-        banner.style.display = 'none';
-      }
-      btnEss.forEach(btn => btn.addEventListener('click', () => acceptConsent('essential')));
-      btnAll.forEach(btn => btn.addEventListener('click', () => acceptConsent('all')));
-
-      // Modal helpers
-      function openModal(modal) { modal.classList.add('active'); document.body.style.overflow = 'hidden'; }
-      function closeModal(modal) { modal.classList.remove('active'); document.body.style.overflow = ''; }
-
-      openPrivacyLinks.forEach(link => {
-        link.addEventListener('click', e => { e.preventDefault(); openModal(privacyModal); });
-      });
-      if (openImpressumLink) {
-        openImpressumLink.addEventListener('click', e => { e.preventDefault(); openModal(impressumModal); });
-      }
-      closeModals.forEach(btn => {
-        btn.addEventListener('click', e => {
-          e.preventDefault();
-          const modal = btn.closest('.modal-overlay');
-          if (modal) closeModal(modal);
-        });
-      });
-      document.querySelectorAll('.modal-overlay').forEach(modal => {
-        modal.addEventListener('click', e => { if (e.target === modal) closeModal(modal); });
-      });
-      document.addEventListener('keydown', e => {
-        if (e.key === 'Escape') {
-          document.querySelectorAll('.modal-overlay.active').forEach(m => closeModal(m));
-        }
-      });
-
-      // Bind AJAX submit
-      if (form) {
-        form.addEventListener('submit', handleSubmit, { passive: false });
-      }
-    });
-  </script>
+    <script src="script.js" defer></script>
 </body>
 </html>
