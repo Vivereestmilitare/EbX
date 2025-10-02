@@ -1,29 +1,32 @@
 <!DOCTYPE html>
 <html lang="en" class="theme-dark">
 <head>
+    <!-- SEO and Meta Tags -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>EbX – AI for People. Intelligence for Growth.</title>
-    
-    <!-- SEO & Social Media Tags -->
-    <meta name="description" content="EbX provides human-centric AI consulting services, including strategy, change management, and process automation to drive measurable growth.">
-    <meta property="og:title" content="EbX – AI for People. Intelligence for Growth.">
-    <meta property="og:description" content="Transforming businesses through human-centric artificial intelligence solutions.">
-    <meta property="og:image" content="https://www.ebx-ai.com/static/social-preview.jpg"> <!-- IMPORTANT: Replace with your actual preview image URL -->
-    <meta property="og:url" content="https://www.ebx-ai.com"> <!-- IMPORTANT: Replace with your final domain -->
+    <title>EbX Nexus – AI for People. Intelligence for Growth.</title>
+    <meta name="description" content="Transforming businesses through human-centric artificial intelligence solutions that drive measurable results.">
 
+    <!-- Social Media / Open Graph -->
+    <meta property="og:title" content="EbX Nexus – AI for People. Intelligence for Growth.">
+    <meta property="og:description" content="Discover how EbX Nexus architects the future of work with human-centric AI.">
+    <meta property="og:image" content="https://www.ebx-ai.com/static/og-image.jpg"> <!-- IMPORTANT: Replace with your actual URL -->
+    <meta property="og:url" content="https://www.ebx-ai.com"> <!-- IMPORTANT: Replace with your actual URL -->
+    <meta name="twitter:card" content="summary_large_image">
+
+    <!-- Favicon and Scripts -->
     <link rel="icon" type="image/x-icon" href="/static/favicon.ico">
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://unpkg.com/feather-icons"></script>
     <script src="https://cdn.jsdelivr.net/npm/vanta@latest/dist/vanta.globe.min.js"></script>
     <link rel="stylesheet" href="style.css">
 </head>
-<body class="loading"> <!-- Class for pre-loader -->
+<body class="loading">
     <svg width="0" height="0" style="position: absolute;">
         <defs>
             <linearGradient id="gradient-icon" x1="0%" y1="0%" x2="100%" y2="100%">
-                <stop offset="0%" stop-color="#6366f1" />
-                <stop offset="100%" stop-color="#10b981" />
+                <stop offset="0%" stop-color="var(--clr-primary)" />
+                <stop offset="100%" stop-color="var(--clr-secondary)" />
             </linearGradient>
         </defs>
     </svg>
@@ -32,9 +35,8 @@
     <header>
         <div class="container nav-container">
             <div class="logo">
-                <!-- NOTE: The correct logo is now shown via CSS -->
-                <img src="logo-dark.jpg" alt="EbX Logo" class="logo-dark">
-                <img src="logo-light.jpg" alt="EbX Logo" class="logo-light">
+                <img src="./logo-dark.jpg" alt="EbX Nexus Logo" class="logo-dark">
+                <img src="./logo-light.jpg" alt="EbX Nexus Logo" class="logo-light">
             </div>
             <div class="controls">
                 <button class="lang-toggle" id="langToggle" aria-label="Toggle language">EN</button>
@@ -53,84 +55,120 @@
             <h1 data-lang="de" style="display: none;"><span class="hero-gradient">KI für Menschen.</span><br>Intelligenz für Wachstum.</h1>
             <p data-lang="en" class="text-xl text-muted" style="max-width: 600px; margin: 0 auto;">Transforming businesses through human-centric artificial intelligence solutions that drive measurable results</p>
             <p data-lang="de" class="text-xl text-muted" style="display: none; max-width: 600px; margin: 0 auto;">Unternehmen transformieren durch menschenzentrierte KI-Lösungen, die messbare Ergebnisse liefern</p>
-            <span class="coming-soon">Launching Q3 2026</span>
+            <span class="coming-soon">Launching Q1 2025</span>
         </div>
     </section>
 
-    <!-- Services Section -->
-    <section id="services" class="anim-on-scroll">
+    <!-- Product Suite Section -->
+    <section id="products" class="anim-on-scroll">
         <div class="container">
-            <h2 class="section-title" data-lang="en">Our AI Consulting Services</h2>
-            <h2 class="section-title" data-lang="de" style="display: none;">Unsere KI-Beratungsleistungen</h2>
+            <h2 class="section-title" data-lang="en">An Ecosystem of Intelligence</h2>
+            <h2 class="section-title" data-lang="de" style="display: none;">Ein Ökosystem der Intelligenz</h2>
             <div class="services-grid">
+                <!-- Card 1: Nexus -->
                 <div class="service-card">
                     <div class="card-border"></div>
-                    <svg class="service-icon" viewBox="0 0 24 24"><path d="M19 3h-4.18C14.4 1.84 13.3 1 12 1s-2.4.84-2.82 2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-7-.25c.22 0 .41.09.55.25.14.16.21.36.21.58 0 .22-.07.42-.21.58-.14.16-.33.25-.55.25s-.41-.09-.55-.25c-.14-.16-.21-.36-.21-.58 0-.22.07-.42.21-.58.14-.16.33-.25.55-.25zM19 19H5V5h2v2h10V5h2v14z"/></svg>
-                    <h3 data-lang="en">AI Strategy & Roadmapping</h3>
-                    <h3 data-lang="de" style="display: none;">KI-Strategie & Roadmapping</h3>
-                    <p data-lang="en">Crafting ethical, scalable AI pathways tailored to your HR organization's needs and goals.</p>
-                    <p data-lang="de" style="display: none;">Entwicklung ethischer, skalierbarer KI-Pfade, die auf die Bedürfnisse und Ziele Ihrer HR-Organisation zugeschnitten sind.</p>
+                    <div class="product-logo-text">
+                        <h3 class="ebx-logo-3d">
+                            <span class="ebx-eb">Eb</span><span class="ebx-x ebx-x-nexus">X</span>
+                        </h3>
+                        <h4 class="product-name product-name-nexus">Nexus</h4>
+                        <p class="product-tagline">The Core of Workforce AI</p>
+                    </div>
                 </div>
+                <!-- Card 2: Aureon -->
                 <div class="service-card">
                     <div class="card-border"></div>
-                    <svg class="service-icon" viewBox="0 0 24 24"><path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 16H5V5h14v14zm-8-2h2v-4h4v-2h-4V7h-2v4H7v2h4z"/></svg>
-                    <h3 data-lang="en">Change Management</h3>
-                    <h3 data-lang="de" style="display: none;">Change Management</h3>
-                    <p data-lang="en">Guiding your teams through transformation via training, culture & adoption strategies.</p>
-                    <p data-lang="de" style="display: none;">Begleitung Ihrer Teams durch Transformation mittels Schulungen, Kultur- und Einführungsstrategien.</p>
+                    <div class="product-logo-text">
+                        <h3 class="ebx-logo-3d">
+                            <span class="ebx-eb">Eb</span><span class="ebx-x ebx-x-aureon">X</span>
+                        </h3>
+                        <h4 class="product-name product-name-aureon">Aureon</h4>
+                        <p class="product-tagline">Illuminating Workforce Intelligence</p>
+                    </div>
                 </div>
+                <!-- Card 3: Axion -->
                 <div class="service-card">
                     <div class="card-border"></div>
-                    <svg class="service-icon" viewBox="0 0 24 24"><path d="M12 6c3.31 0 6 2.69 6 6s-2.69 6-6 6-6-2.69-6-6 2.69-6 6-6zm0-2c-4.42 0-8 3.58-8 8s3.58 8 8 8 8-3.58 8-8-3.58-8-8-8zm-1 7H8v2h3v3h2v-3h3v-2h-3V8h-2v3z"/></svg>
-                    <h3 data-lang="en">HR Process Automation</h3>
-                    <h3 data-lang="de" style="display: none;">HR-Prozessautomatisierung</h3>
-                    <p data-lang="en">Intelligent automation for recruitment, onboarding, employee services, and talent workflows.</p>
-                    <p data-lang="de" style="display: none;">Intelligente Automatisierung für Rekrutierung, Onboarding, Mitarbeiterservice und Talent-Workflows.</p>
+                    <div class="product-logo-text">
+                        <h3 class="ebx-logo-3d">
+                            <span class="ebx-eb">Eb</span><span class="ebx-x ebx-x-axion">X</span>
+                        </h3>
+                        <h4 class="product-name product-name-axion">Axion</h4>
+                        <p class="product-tagline">Predictive Precision in Hiring</p>
+                    </div>
                 </div>
+                <!-- Card 4: Orion -->
                 <div class="service-card">
                     <div class="card-border"></div>
-                    <svg class="service-icon" viewBox="0 0 24 24"><path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 16H5V5h14v14zM7 12h2v5H7zm4-7h2v12h-2zm4 5h2v7h-2z"/></svg>
-                    <h3 data-lang="en">AI Implementation & Integration</h3>
-                    <h3 data-lang="de" style="display: none;">KI-Implementierung & Integration</h3>
-                    <p data-lang="en">Seamless integration of AI solutions into your existing HR systems and workflows.</p>
-                    <p data-lang="de" style="display: none;">Nahtlose Integration von KI-Lösungen in Ihre bestehenden HR-Systeme und Workflows.</p>
+                    <div class="product-logo-text">
+                        <h3 class="ebx-logo-3d">
+                            <span class="ebx-eb">Eb</span><span class="ebx-x ebx-x-orion">X</span>
+                        </h3>
+                        <h4 class="product-name product-name-orion">Orion</h4>
+                        <p class="product-tagline">Vision for Future Skills</p>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Why Us Section -->
+    <!-- Why Us Section - REDESIGNED -->
     <section id="why-us" class="anim-on-scroll">
         <div class="container">
-            <h2 class="section-title" data-lang="en">Why Choose EbX</h2>
-            <h2 class="section-title" data-lang="de" style="display: none;">Warum EbX wählen</h2>
+            <h2 class="section-title" data-lang="en">The Pillars of Trust</h2>
+            <h2 class="section-title" data-lang="de" style="display: none;">Die Säulen des Vertrauens</h2>
             <div class="why-us-grid">
-                <div class="feature feature-main">
-                    <div class="feature-content">
-                        <svg class="service-icon" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm4.59-12.42L10 14.17l-2.59-2.58L6 13l4 4 8-8z"/></svg>
-                        <h3 data-lang="en">Proven Expertise</h3>
-                        <h3 data-lang="de" style="display: none;">Bewährte Expertise</h3>
-                        <p data-lang="en">Years of experience delivering successful AI implementations</p>
-                        <p data-lang="de" style="display: none;">Jahrelange Erfahrung in der erfolgreichen Implementierung von KI-Lösungen</p>
+                <!-- Pillar 1: Expertise -->
+                <div class="feature">
+                    <div class="pillar-icon-wrapper">
+                        <svg class="pillar-icon" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                            <defs>
+                                <radialGradient id="grad1" cx="50%" cy="50%" r="50%" fx="50%" fy="50%">
+                                    <stop offset="0%" style="stop-color:var(--clr-primary);stop-opacity:0.3" />
+                                    <stop offset="100%" style="stop-color:var(--clr-primary);stop-opacity:0" />
+                                </radialGradient>
+                            </defs>
+                            <circle class="pillar-glow" cx="50" cy="50" r="40" fill="url(#grad1)" />
+                            <path class="pillar-shape" fill="none" stroke="url(#gradient-icon)" stroke-width="2" d="M50 10 V 25 M50 90 V 75 M10 50 H 25 M90 50 H 75 M21.2 21.2 L 32.5 32.5 M78.8 78.8 L 67.5 67.5 M21.2 78.8 L 32.5 67.5 M78.8 21.2 L 67.5 32.5" />
+                            <circle class="pillar-core" cx="50" cy="50" r="15" fill="none" stroke="url(#gradient-icon)" stroke-width="2"/>
+                        </svg>
                     </div>
+                    <h3 data-lang="en">Expertise as a Foundation</h3>
+                    <h3 data-lang="de" style="display: none;">Expertise als Fundament</h3>
+                    <p data-lang="en">Built on years of proven experience delivering successful, strategic AI implementations.</p>
+                    <p data-lang="de" style="display: none;">Aufbauend auf jahrelanger Erfahrung in der erfolgreichen Umsetzung strategischer KI-Implementierungen.</p>
                 </div>
-                <div class="feature feature-main">
-                    <div class="feature-content">
-                        <svg class="service-icon" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm-1-13h2v6h-2zm0 8h2v2h-2z"/></svg>
-                        <h3 data-lang="en">Human-Centered Approach</h3>
-                        <h3 data-lang="de" style="display: none;">Menschenzentrierter Ansatz</h3>
-                        <p data-lang="en">Technology that enhances human capabilities, not replaces them</p>
-                        <p data-lang="de" style="display: none;">Technologie, die menschliche Fähigkeiten erweitert, nicht ersetzt</p>
+
+                <!-- Pillar 2: Human-Centric -->
+                <div class="feature">
+                    <div class="pillar-icon-wrapper">
+                         <svg class="pillar-icon" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                            <path class="pillar-shape" fill="none" stroke="url(#gradient-icon)" stroke-width="2" d="M50,15 A35,35 0 1,1 49.9,15" />
+                            <circle class="pillar-glow" cx="50" cy="50" r="12" fill="url(#grad1)" />
+                             <circle cx="50" cy="42" r="8" fill="url(#gradient-icon)" />
+                             <path d="M38 70 C 40 60, 60 60, 62 70" stroke="url(#gradient-icon)" stroke-width="2" fill="none" stroke-linecap="round"/>
+                        </svg>
                     </div>
+                    <h3 data-lang="en">Humanity at the Core</h3>
+                    <h3 data-lang="de" style="display: none;">Menschlichkeit im Kern</h3>
+                    <p data-lang="en">We design technology that amplifies human capability, potential, and value—never replaces it.</p>
+                    <p data-lang="de" style="display: none;">Wir entwickeln Technologie, die menschliche Fähigkeiten, Potenziale und Werte erweitert – niemals ersetzt.</p>
                 </div>
-                <div class="feature feature-main">
-                    <div class="feature-content">
-                        <svg class="service-icon" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm4-4H8v-2h8v2z"/></svg>
-                        <h3 data-lang="en">Scalable Solutions</h3>
-                        <h3 data-lang="de" style="display: none;">Skalierbare Lösungen</h3>
-                        <p data-lang="en">Future-proof architectures that grow with your business</p>
-                        <p data-lang="de" style="display: none;">Zukunftssichere Architekturen, die mit Ihrem Unternehmen wachsen</p>
+
+                <!-- Pillar 3: Growth - NEW ICON -->
+                <div class="feature">
+                    <div class="pillar-icon-wrapper">
+                       <svg class="pillar-icon icon-growth" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                           <path class="growth-chevron" fill="none" stroke="url(#gradient-icon)" stroke-width="2" d="M30 60 L 50 40 L 70 60" />
+                           <path class="growth-chevron" fill="none" stroke="url(#gradient-icon)" stroke-width="2" d="M30 75 L 50 55 L 70 75" />
+                           <path class="growth-chevron" fill="none" stroke="url(#gradient-icon)" stroke-width="2" d="M30 90 L 50 70 L 70 90" />
+                       </svg>
                     </div>
+                    <h3 data-lang="en">Engineered for Growth</h3>
+                    <h3 data-lang="de" style="display: none;">Entwickelt für Wachstum</h3>
+                    <p data-lang="en">Our solutions are future-proof, creating scalable architectures that grow with your business.</p>
+                    <p data-lang="de" style="display: none;">Unsere Lösungen sind zukunftssichere, skalierbare Architekturen, die mit Ihrem Unternehmen wachsen.</p>
                 </div>
             </div>
         </div>
@@ -142,25 +180,38 @@
             <h2 class="section-title" data-lang="en">Stay Informed</h2>
             <h2 class="section-title" data-lang="de" style="display: none;">Bleiben Sie informiert</h2>
             <div class="signup-form">
-                <form id="emailForm" action="https://formspree.io/f/mrbyeddn" method="POST">
+                <form id="emailForm" action="https://script.google.com/macros/s/AKfycbyt2NLmvZ8zVm9JCm9hASIMXqrdnmAUjhFYMVHxd6dFkPaltjOXftvvZyBVyL_oko6I/exec" method="POST">
+                    <div class="form-group">
+                        <label for="name" data-lang="en">Your Name</label>
+                        <label for="name" data-lang="de" style="display: none;">Ihr Name</label>
+                        <input type="text" id="name" name="name" required>
+                        <div class="input-glow"></div>
+                    </div>
                     <div class="form-group">
                         <label for="email" data-lang="en">Email Address</label>
                         <label for="email" data-lang="de" style="display: none;">E-Mail-Adresse</label>
                         <input type="email" id="email" name="email" required>
+                        <div class="input-glow"></div>
                     </div>
                     <div class="form-group">
                         <div class="checkbox-group">
                             <input type="checkbox" id="consent" name="consent" required>
-                            <label for="consent" data-lang="en">I agree to receive updates about EbX services</label>
-                            <label for="consent" data-lang="de" style="display: none;">Ich stimme zu, Updates zu EbX-Dienstleistungen zu erhalten</label>
+                            <label for="consent" data-lang="en">I agree to receive updates about EbX Nexus services</label>
+                            <label for="consent" data-lang="de" style="display: none;">Ich stimme zu, Updates zu EbX Nexus-Diensten zu erhalten</label>
                         </div>
                     </div>
                     <button type="submit" class="btn" id="submitBtn" disabled>Subscribe</button>
                 </form>
-                <div class="success-message" id="successMessage" data-lang="en">Thank you for subscribing!</div>
-                <div class="success-message" id="successMessageDE" data-lang="de" style="display: none;">Vielen Dank für Ihre Anmeldung!</div>
-                <div class="error-message" id="errorMessage" data-lang="en">An error occurred. Please try again.</div>
-                <div class="error-message" id="errorMessageDE" data-lang="de" style="display: none;">Ein Fehler ist aufgetreten. Bitte versuchen Sie es erneut.</div>
+                <div class="success-message" id="successMessage" data-lang="en">Thank you! Your submission has been received.</div>
+                <div class="success-message" id="successMessageDE" data-lang="de" style="display: none;">Vielen Dank! Ihre Anfrage wurde empfangen.</div>
+                <div class="error-message" id="errorMessage" data-lang="en">
+                    <i data-feather="alert-triangle" style="width:24px; height:24px;"></i>
+                    <span>An error occurred. Please try again.</span>
+                </div>
+                 <div class="error-message" id="errorMessageDE" data-lang="de" style="display: none;">
+                    <i data-feather="alert-triangle" style="width:24px; height:24px;"></i>
+                    <span>Ein Fehler ist aufgetreten. Bitte versuchen Sie es erneut.</span>
+                </div>
             </div>
         </div>
     </section>
@@ -177,8 +228,8 @@
                 </div>
             </div>
             <div class="footer-bottom" style="margin-top: 2rem; padding-top: 1rem; border-top: 1px solid var(--clr-muted); text-align: center; font-size: 0.9rem; color: var(--clr-muted);">
-                <p data-lang="en">© 2024 EbX</p>
-                <p data-lang="de" style="display: none;">© 2024 EbX</p>
+                <p data-lang="en">© 2024 EbX Nexus</p>
+                <p data-lang="de" style="display: none;">© 2024 EbX Nexus</p>
             </div>
         </div>
     </footer>
@@ -186,69 +237,23 @@
     <!-- Modals -->
     <div class="modal" id="privacyModal">
         <div class="modal-content">
-            <button class="close-modal" id="closePrivacy">&times;</button>
+            <button class="close-modal">&times;</button>
             <div data-lang="en">
-                <h2>Privacy Policy</h2>
-                <p>Last updated: October 1, 2025</p>
-                <h4>1. General Information</h4>
-                <p>The following gives a simple overview of what happens to your personal information when you visit our website. The responsible party for data processing on this website (the "controller") is:</p>
-                <p>Christian Eberle (EbX)<br>Bettina-von-Arnim Str. 17<br>79189 Bad Krozingen<br>Email: info@christian-eberle.com</p>
-                <h4>2. Your Rights as a Data Subject</h4>
-                <p>You have the following rights under the GDPR:</p>
-                <ul><li><strong>Right of access (Art. 15 GDPR):</strong> You have the right to request information about your personal data processed by us.</li><li><strong>Right to rectification (Art. 16 GDPR):</strong> You have the right to demand the correction of incorrect or incomplete personal data stored by us.</li><li><strong>Right to erasure (Art. 17 GDPR):</strong> You have the right to request the deletion of your personal data stored by us.</li><li><strong>Right to restriction of processing (Art. 18 GDPR):</strong> You have the right to request the restriction of the processing of your personal data.</li><li><strong>Right to data portability (Art. 20 GDPR):</strong> You have the right to receive your personal data in a structured, common and machine-readable format.</li><li><strong>Right to object (Art. 21 GDPR):</strong> You have the right to object to the processing of your personal data based on legitimate interests.</li><li><strong>Right to withdraw consent (Art. 7(3) GDPR):</strong> You have the right to withdraw your consent at any time.</li><li><strong>Right to lodge a complaint (Art. 77 GDPR):</strong> You have the right to complain to a supervisory authority.</li></ul>
-                <h4>3. Data Collection on Our Website</h4>
-                <p><strong>Server Log Files & Hosting</strong></p>
-                <p>Our website is hosted by IONOS SE, Elgendorfer Str. 57, 56410 Montabaur, Germany. The provider of the pages automatically collects and stores information in so-called server log files, which your browser automatically transmits. These are: Browser type and version, operating system used, referrer URL, host name of the accessing computer, time of the server request, and IP address. This data is not merged with other data sources. The basis for data processing is Art. 6(1)(f) GDPR, our legitimate interest in the secure and efficient provision of our website. We have concluded a data processing agreement (DPA) with IONOS.</p>
-                <p><strong>Contact Form (via Formspree)</strong></p>
-                <p>If you use our contact form to subscribe to updates, your email address and consent status are transmitted to Formspree, Inc., a US-based service, for processing. Formspree may also collect your IP address. The data processing is based on your explicit consent (Art. 6(1)(a) GDPR). You can revoke this consent at any time. For more information, please see Formspree's privacy policy: <a href="https://formspree.io/legal/privacy-policy/" target="_blank" rel="noopener noreferrer">https://formspree.io/legal/privacy-policy/</a>.</p>
-                <p><strong>Cookies & Local Storage</strong></p>
-                <p>Our website uses local storage to save your preferences for language and theme (light/dark mode). These are technically necessary to provide the service you have requested and are stored based on § 25(2) TTDSG. We also use a cookie to store your consent decision regarding optional features. This is also technically necessary.</p>
-                <p><strong>Plausible Analytics</strong></p>
-                <p>If you provide your consent ("Allow Optional Features"), we use the privacy-friendly web analysis service Plausible Analytics. Plausible does not use cookies and does not collect any personal data. All data, such as referral sources, top pages, and device information, is collected anonymously. The processing is based on your consent (Art. 6(1)(a) GDPR and § 25(1) TTDSG). You can find more information here: <a href="https://plausible.io/data-policy" target="_blank" rel="noopener noreferrer">https://plausible.io/data-policy</a>.</p>
-                <p><strong>Content Delivery Networks (CDNs)</strong></p>
-                <p>This site uses external libraries (Tailwind CSS, Feather Icons, Vanta.js) hosted on CDNs (e.g., Cloudflare, JSDelivr). When you access our site, your browser requests these files, sending your IP address to the CDN provider. This is based on our legitimate interest (Art. 6(1)(f) GDPR) in a fast, secure, and efficient delivery of our website content.</p>
+                <h2>Privacy Policy</h2><p>Last updated: October 2, 2025</p><h4>1. General Information</h4><p>The following gives a simple overview of what happens to your personal information when you visit our website. The responsible party for data processing on this website (the "controller") is:</p><p>Christian Eberle (EbX Nexus)<br>Bettina-von-Arnim Str. 17<br>79189 Bad Krozingen<br>Email: info@christian-eberle.com</p><h4>2. Your Rights as a Data Subject</h4><p>You have the following rights under the GDPR:</p><ul><li><strong>Right of access (Art. 15 GDPR):</strong> You have the right to request information about your personal data processed by us.</li><li><strong>Right to rectification (Art. 16 GDPR):</strong> You have the right to demand the correction of incorrect or incomplete personal data stored by us.</li><li><strong>Right to erasure (Art. 17 GDPR):</strong> You have the right to request the deletion of your personal data stored by us.</li><li><strong>Right to restriction of processing (Art. 18 GDPR):</strong> You have the right to request the restriction of the processing of your personal data.</li><li><strong>Right to data portability (Art. 20 GDPR):</strong> You have the right to receive your personal data in a structured, common and machine-readable format.</li><li><strong>Right to object (Art. 21 GDPR):</strong> You have the right to object to the processing of your personal data based on legitimate interests.</li><li><strong>Right to withdraw consent (Art. 7(3) GDPR):</strong> You have the right to withdraw your consent at any time.</li><li><strong>Right to lodge a complaint (Art. 77 GDPR):</strong> You have the right to complain to a supervisory authority.</li></ul><h4>3. Data Collection on Our Website</h4><p><strong>Server Log Files & Hosting</strong></p><p>Our website is hosted by IONOS SE, Elgendorfer Str. 57, 56410 Montabaur, Germany. The provider of the pages automatically collects and stores information in so-called server log files, which your browser automatically transmits. These are: Browser type and version, operating system used, referrer URL, host name of the accessing computer, time of the server request, and IP address. This data is not merged with other data sources. The basis for data processing is Art. 6(1)(f) GDPR, our legitimate interest in the secure and efficient provision of our website. We have concluded a data processing agreement (DPA) with IONOS.</p><p><strong>Contact Form (via Google Apps Script)</strong></p><p>If you use our contact form to subscribe to updates, your name and email address are transmitted to Google's servers as part of the Google Apps Script execution. This is necessary to process your request and send the confirmation email. The data processing is based on your explicit consent (Art. 6(1)(a) GDPR). You can revoke this consent at any time. For more information, please see Google's privacy policy: <a href="https://policies.google.com/privacy" target="_blank" rel="noopener noreferrer">https://policies.google.com/privacy</a>.</p><p><strong>Cookies & Local Storage</strong></p><p>Our website uses local storage to save your preferences for language and theme (light/dark mode). These are technically necessary to provide the service you have requested and are stored based on § 25(2) TTDSG. We also use a cookie to store your consent decision regarding optional features. This is also technically necessary.</p><p><strong>GoatCounter Analytics</strong></p><p>If you provide your consent ("Allow Optional Features"), we use the privacy-friendly web analysis service GoatCounter. GoatCounter does not use cookies and does not collect any personal data. All data is collected anonymously. The processing is based on your consent (Art. 6(1)(a) GDPR and § 25(1) TTDSG). You can find more information here: <a href="https://www.goatcounter.com/help/privacy" target="_blank" rel="noopener noreferrer">https://www.goatcounter.com/help/privacy</a>.</p><p><strong>Content Delivery Networks (CDNs)</strong></p><p>This site uses external libraries (Tailwind CSS, Feather Icons, Vanta.js) hosted on CDNs. When you access our site, your browser requests these files, sending your IP address to the CDN provider. This is based on our legitimate interest (Art. 6(1)(f) GDPR) in a fast, secure, and efficient delivery of our website content.</p>
             </div>
             <div data-lang="de" style="display: none;">
-                <h2>Datenschutzerklärung</h2>
-                <p>Stand: 01. Oktober 2025</p>
-                <h4>1. Allgemeines</h4>
-                <p>Die folgenden Hinweise geben einen einfachen Überblick darüber, was mit Ihren personenbezogenen Daten passiert, wenn Sie unsere Website besuchen. Verantwortliche Stelle für die Datenverarbeitung auf dieser Website ist:</p>
-                <p>Christian Eberle (EbX)<br>Bettina-von-Arnim Str. 17<br>79189 Bad Krozingen<br>E-Mail: info@christian-eberle.com</p>
-                <h4>2. Ihre Rechte als betroffene Person</h4>
-                <p>Ihnen stehen gemäß der DSGVO folgende Rechte zu:</p>
-                <ul><li><strong>Auskunftsrecht (Art. 15 DSGVO):</strong> Sie haben das Recht, Auskunft über Ihre von uns verarbeiteten personenbezogenen Daten zu verlangen.</li><li><strong>Recht auf Berichtigung (Art. 16 DSGVO):</strong> Sie haben das Recht, die Berichtigung unrichtiger oder die Vervollständigung Ihrer bei uns gespeicherten Daten zu verlangen.</li><li><strong>Recht auf Löschung (Art. 17 DSGVO):</strong> Sie haben das Recht, die Löschung Ihrer bei uns gespeicherten personenbezogenen Daten zu verlangen.</li><li><strong>Recht auf Einschränkung der Verarbeitung (Art. 18 DSGVO):</strong> Sie haben das Recht, die Einschränkung der Verarbeitung Ihrer Daten zu verlangen.</li><li><strong>Recht auf Datenübertragbarkeit (Art. 20 DSGVO):</strong> Sie haben das Recht, Ihre Daten in einem strukturierten, gängigen und maschinenlesbaren Format zu erhalten.</li><li><strong>Widerspruchsrecht (Art. 21 DSGVO):</strong> Sie haben das Recht, Widerspruch gegen die Verarbeitung Ihrer Daten auf Grundlage berechtigter Interessen einzulegen.</li><li><strong>Recht auf Widerruf der Einwilligung (Art. 7 Abs. 3 DSGVO):</strong> Sie haben das Recht, eine erteilte Einwilligung jederzeit zu widerrufen.</li><li><strong>Beschwerderecht (Art. 77 DSGVO):</strong> Sie haben das Recht, sich bei einer Aufsichtsbehörde zu beschweren.</li></ul>
-                <h4>3. Datenerfassung auf unserer Website</h4>
-                <p><strong>Server-Log-Dateien & Hosting</strong></p>
-                <p>Unsere Website wird bei der IONOS SE, Elgendorfer Str. 57, 56410 Montabaur, Deutschland, gehostet. Der Provider der Seiten erhebt und speichert automatisch Informationen in so genannten Server-Log-Dateien, die Ihr Browser automatisch übermittelt. Dies sind: Browsertyp und -version, verwendetes Betriebssystem, Referrer URL, Hostname des zugreifenden Rechners, Uhrzeit der Serveranfrage und IP-Adresse. Eine Zusammenführung dieser Daten mit anderen Datenquellen wird nicht vorgenommen. Grundlage für die Datenverarbeitung ist Art. 6 Abs. 1 lit. f DSGVO, unser berechtigtes Interesse an der sicheren und effizienten Bereitstellung unserer Website. Wir haben einen Vertrag zur Auftragsverarbeitung (AVV) mit IONOS geschlossen.</p>
-                <p><strong>Kontaktformular (via Formspree)</strong></p>
-                <p>Wenn Sie unser Kontaktformular für Updates nutzen, werden Ihre E-Mail-Adresse und Ihr Einwilligungsstatus zur Verarbeitung an den US-Dienstleister Formspree, Inc. übermittelt. Formspree kann dabei auch Ihre IP-Adresse erfassen. Die Datenverarbeitung erfolgt auf Grundlage Ihrer ausdrücklichen Einwilligung (Art. 6 Abs. 1 lit. a DSGVO). Sie können diese Einwilligung jederzeit widerrufen. Weitere Informationen finden Sie in der Datenschutzerklärung von Formspree: <a href="https://formspree.io/legal/privacy-policy/" target="_blank" rel="noopener noreferrer">https://formspree.io/legal/privacy-policy/</a>.</p>
-                <p><strong>Cookies & Local Storage</strong></p>
-                <p>Unsere Website nutzt den Local Storage, um Ihre Präferenzen für Sprache und Theme (Hell-/Dunkelmodus) zu speichern. Diese sind technisch notwendig, um den von Ihnen angeforderten Dienst bereitzustellen und werden auf Grundlage von § 25 Abs. 2 TTDSG gespeichert. Wir verwenden zudem ein Cookie, um Ihre Einwilligungsentscheidung bezüglich optionaler Funktionen zu speichern. Auch dies ist technisch notwendig.</p>
-                <p><strong>Plausible Analytics</strong></p>
-                <p>Sofern Sie Ihre Einwilligung erteilen ("Optionale Funktionen erlauben"), nutzen wir den datenschutzfreundlichen Webanalysedienst Plausible Analytics. Plausible verwendet keine Cookies und sammelt keine personenbezogenen Daten. Alle Daten, wie Verweisquellen, Top-Seiten und Geräteinformationen, werden anonymisiert erfasst. Die Verarbeitung erfolgt auf Grundlage Ihrer Einwilligung (Art. 6 Abs. 1 lit. a DSGVO und § 25 Abs. 1 TTDSG). Weitere Informationen finden Sie hier: <a href="https://plausible.io/data-policy" target="_blank" rel="noopener noreferrer">https://plausible.io/data-policy</a>.</p>
-                <p><strong>Content Delivery Networks (CDNs)</strong></p>
-                <p>Diese Seite nutzt externe Bibliotheken (Tailwind CSS, Feather Icons, Vanta.js), die über CDNs (z.B. Cloudflare, JSDelivr) gehostet werden. Bei Aufruf unserer Seite fordert Ihr Browser diese Dateien an und übermittelt dabei Ihre IP-Adresse an den CDN-Anbieter. Dies geschieht auf Grundlage unseres berechtigten Interesses (Art. 6 Abs. 1 lit. f DSGVO) an einer schnellen, sicheren und effizienten Auslieferung unserer Website-Inhalte.</p>
+                <h2>Datenschutzerklärung</h2><p>Stand: 02. Oktober 2025</p><h4>1. Allgemeines</h4><p>Die folgenden Hinweise geben einen einfachen Überblick darüber, was mit Ihren personenbezogenen Daten passiert, wenn Sie unsere Website besuchen. Verantwortliche Stelle für die Datenverarbeitung auf dieser Website ist:</p><p>Christian Eberle (EbX Nexus)<br>Bettina-von-Arnim Str. 17<br>79189 Bad Krozingen<br>E-Mail: info@christian-eberle.com</p><h4>2. Ihre Rechte als betroffene Person</h4><p>Ihnen stehen gemäß der DSGVO folgende Rechte zu:</p><ul><li><strong>Auskunftsrecht (Art. 15 DSGVO):</strong> Sie haben das Recht, Auskunft über Ihre von uns verarbeiteten personenbezogenen Daten zu verlangen.</li><li><strong>Recht auf Berichtigung (Art. 16 DSGVO):</strong> Sie haben das Recht, die Berichtigung unrichtiger oder die Vervollständigung Ihrer bei uns gespeicherten Daten zu verlangen.</li><li><strong>Recht auf Löschung (Art. 17 DSGVO):</strong> Sie haben das Recht, die Löschung Ihrer bei uns gespeicherten personenbezogenen Daten zu verlangen.</li><li><strong>Recht auf Einschränkung der Verarbeitung (Art. 18 DSGVO):</strong> Sie haben das Recht, die Einschränkung der Verarbeitung Ihrer Daten zu verlangen.</li><li><strong>Recht auf Datenübertragbarkeit (Art. 20 DSGVO):</strong> Sie haben das Recht, Ihre Daten in einem strukturierten, gängigen und maschinenlesbaren Format zu erhalten.</li><li><strong>Widerspruchsrecht (Art. 21 DSGVO):</strong> Sie haben das Recht, Widerspruch gegen die Verarbeitung Ihrer Daten auf Grundlage berechtigter Interessen einzulegen.</li><li><strong>Recht auf Widerruf der Einwilligung (Art. 7 Abs. 3 DSGVO):</strong> Sie haben das Recht, eine erteilte Einwilligung jederzeit zu widerrufen.</li><li><strong>Beschwerderecht (Art. 77 DSGVO):</strong> Sie haben das Recht, sich bei einer Aufsichtsbehörde zu beschweren.</li></ul><h4>3. Datenerfassung auf unserer Website</h4><p><strong>Server-Log-Dateien & Hosting</strong></p><p>Unsere Website wird bei der IONOS SE, Elgendorfer Str. 57, 56410 Montabaur, Deutschland, gehostet. Der Provider der Seiten erhebt und speichert automatisch Informationen in so genannten Server-Log-Dateien, die Ihr Browser automatisch übermittelt. Dies sind: Browsertyp und -version, verwendetes Betriebssystem, Referrer URL, Hostname des zugreifenden Rechners, Uhrzeit der Serveranfrage und IP-Adresse. Eine Zusammenführung dieser Daten mit anderen Datenquellen wird nicht vorgenommen. Grundlage für die Datenverarbeitung ist Art. 6 Abs. 1 lit. f DSGVO, unser berechtigtes Interesse an der sicheren und effizienten Bereitstellung unserer Website. Wir haben einen Vertrag zur Auftragsverarbeitung (AVV) mit IONOS geschlossen.</p><p><strong>Kontaktformular (via Google Apps Script)</strong></p><p>Wenn Sie unser Kontaktformular für Updates nutzen, werden Ihr Name und Ihre E-Mail-Adresse im Rahmen der Ausführung des Google Apps Scripts an die Server von Google übertragen. Dies ist notwendig, um Ihre Anfrage zu bearbeiten und die Bestätigungs-E-Mail zu versenden. Die Datenverarbeitung erfolgt auf Grundlage Ihrer ausdrücklichen Einwilligung (Art. 6 Abs. 1 lit. a DSGVO). Sie können diese Einwilligung jederzeit widerrufen. Weitere Informationen finden Sie in der Datenschutzerklärung von Google: <a href="https://policies.google.com/privacy" target="_blank" rel="noopener noreferrer">https://policies.google.com/privacy</a>.</p><p><strong>Cookies & Local Storage</strong></p><p>Unsere Website nutzt den Local Storage, um Ihre Präferenzen für Sprache und Theme (Hell-/Dunkelmodus) zu speichern. Diese sind technisch notwendig, um den von Ihnen angeforderten Dienst bereitzustellen und werden auf Grundlage von § 25 Abs. 2 TTDSG gespeichert. Wir verwenden zudem ein Cookie, um Ihre Einwilligungsentscheidung bezüglich optionaler Funktionen zu speichern. Auch dies ist technisch notwendig.</p><p><strong>GoatCounter Analytics</strong></p><p>Sofern Sie Ihre Einwilligung erteilen ("Optionale Funktionen erlauben"), nutzen wir den datenschutzfreundlichen Webanalysedienst GoatCounter. GoatCounter verwendet keine Cookies und sammelt keine personenbezogenen Daten. Alle Daten werden anonymisiert erfasst. Die Verarbeitung erfolgt auf Grundlage Ihrer Einwilligung (Art. 6 Abs. 1 lit. a DSGVO und § 25 Abs. 1 TTDSG). Weitere Informationen finden Sie hier: <a href="https://www.goatcounter.com/help/privacy" target="_blank" rel="noopener noreferrer">https://www.goatcounter.com/help/privacy</a>.</p><p><strong>Content Delivery Networks (CDNs)</strong></p><p>Diese Seite nutzt externe Bibliotheken (Tailwind CSS, Feather Icons, Vanta.js), die über CDNs gehostet werden. Bei Aufruf unserer Seite fordert Ihr Browser diese Dateien an und übermittelt dabei Ihre IP-Adresse an den CDN-Anbieter. Dies geschieht auf Grundlage unseres berechtigten Interesses (Art. 6 Abs. 1 lit. f DSGVO) an einer schnellen, sicheren und effizienten Auslieferung unserer Website-Inhalte.</p>
             </div>
         </div>
     </div>
     <div class="modal" id="impressumPanel">
         <div class="modal-content">
-            <button class="close-modal" id="closeImpressum">&times;</button>
+            <button class="close-modal">&times;</button>
             <div data-lang="en">
-                <h2>Legal Notice (Impressum)</h2>
-                <p>Information according to § 5 TMG (German Telemedia Act):</p>
-                <p>EbX<br>Christian Eberle<br>Bettina-von-Arnim Str. 17<br>79189 Bad Krozingen<br>Germany</p>
-                <p><strong>Represented by:</strong><br>Christian Eberle</p>
-                <p><strong>Contact:</strong><br>Email: info@christian-eberle.com</p>
-                <p><strong>EU Dispute Resolution:</strong><br>The European Commission provides a platform for online dispute resolution (OS): <a href="https://ec.europa.eu/consumers/odr/" target="_blank" rel="noopener noreferrer">https://ec.europa.eu/consumers/odr/</a>.<br>You can find our email address in the legal notice above. We are not willing or obliged to participate in dispute resolution proceedings before a consumer arbitration board.</p>
+                <h2>Legal Notice (Impressum)</h2><p>Information according to § 5 TMG (German Telemedia Act):</p><p>EbX Nexus<br>Christian Eberle<br>Bettina-von-Arnim Str. 17<br>79189 Bad Krozingen<br>Germany</p><p><strong>Represented by:</strong><br>Christian Eberle</p><p><strong>Contact:</strong><br>Email: info@christian-eberle.com</p><p><strong>EU Dispute Resolution:</strong><br>The European Commission provides a platform for online dispute resolution (OS): <a href="https://ec.europa.eu/consumers/odr/" target="_blank" rel="noopener noreferrer">https://ec.europa.eu/consumers/odr/</a>.<br>You can find our email address in the legal notice above. We are not willing or obliged to participate in dispute resolution proceedings before a consumer arbitration board.</p>
             </div>
             <div data-lang="de" style="display: none;">
-                <h2>Impressum</h2>
-                <p>Angaben gemäß § 5 TMG:</p>
-                <p>EbX<br>Christian Eberle<br>Bettina-von-Arnim Str. 17<br>79189 Bad Krozingen</p>
-                <p><strong>Vertreten durch:</strong><br>Christian Eberle</p>
-                <p><strong>Kontakt:</strong><br>E-Mail: info@christian-eberle.com</p>
-                <p><strong>EU-Streitschlichtung:</strong><br>Die Europäische Kommission stellt eine Plattform zur Online-Streitbeilegung (OS) bereit: <a href="https://ec.europa.eu/consumers/odr/" target="_blank" rel="noopener noreferrer">https://ec.europa.eu/consumers/odr/</a>.<br>Unsere E-Mail-Adresse finden Sie oben im Impressum. Wir sind nicht bereit oder verpflichtet, an Streitbeilegungsverfahren vor einer Verbraucherschlichtungsstelle teilzunehmen.</p>
+                <h2>Impressum</h2><p>Angaben gemäß § 5 TMG:</p><p>EbX Nexus<br>Christian Eberle<br>Bettina-von-Arnim Str. 17<br>79189 Bad Krozingen</p><p><strong>Vertreten durch:</strong><br>Christian Eberle</p><p><strong>Kontakt:</strong><br>E-Mail: info@christian-eberle.com</p><p><strong>EU-Streitschlichtung:</strong><br>Die Europäische Kommission stellt eine Plattform zur Online-Streitbeilegung (OS) bereit: <a href="https://ec.europa.eu/consumers/odr/" target="_blank" rel="noopener noreferrer">https://ec.europa.eu/consumers/odr/</a>.<br>Unsere E-Mail-Adresse finden Sie oben im Impressum. Wir sind nicht bereit oder verpflichtet, an Streitbeilegungsverfahren vor einer Verbraucherschlichtungsstelle teilzunehmen.</p>
             </div>
         </div>
     </div>
@@ -275,3 +280,4 @@
     <script src="script.js" defer></script>
 </body>
 </html>
+
