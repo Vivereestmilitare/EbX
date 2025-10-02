@@ -12,15 +12,22 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     };
 
-    // --- DOM ELEMENTS ---
-    const themeToggle = document.getElementById('themeToggle');
-    const langToggle = document.getElementById('langToggle');
-    const emailForm = document.getElementById('emailForm');
-    const emailInput = document.getElementById('email');
-    const consentCheckbox = document.getElementById('consent');
-    const submitBtn = document.getElementById('submitBtn');
-    const cookieBanner = document.getElementById('cookieBanner');
-    const backToTopBtn = document.getElementById('backToTopBtn');
+    // --- DOM ELEMENTS (with existence checks) ---
+    const getElement = (id) => {
+        const el = document.getElementById(id);
+        if (!el) console.error(`Element with ID "${id}" not found.`);
+        return el;
+    };
+
+    const themeToggle = getElement('themeToggle');
+    const langToggle = getElement('langToggle');
+    const emailForm = getElement('emailForm');
+    const nameInput = getElement('name');
+    const emailInput = getElement('email');
+    const consentCheckbox = getElement('consent');
+    const submitBtn = getElement('submitBtn');
+    const cookieBanner = getElement('cookieBanner');
+    const backToTopBtn = getElement('backToTopBtn');
 
     // --- THEME MANAGEMENT ---
     const applyTheme = (theme) => {
@@ -31,10 +38,12 @@ document.addEventListener('DOMContentLoaded', () => {
     };
 
     const updateThemeVisuals = (theme) => {
-        const icon = theme === 'dark' ? 'sun' : 'moon';
-        themeToggle.querySelector('i').setAttribute('data-feather', icon);
-        feather.replace();
-        // Logo switching is now handled purely by CSS
+        if (typeof feather !== 'undefined' && themeToggle) {
+            const icon = theme === 'dark' ? 'sun' : 'moon';
+            const i = themeToggle.querySelector('i');
+            if(i) i.setAttribute('data-feather', icon);
+            feather.replace();
+        }
     };
 
     const handleVanta = (theme) => {
@@ -60,29 +69,29 @@ document.addEventListener('DOMContentLoaded', () => {
             el.style.display = el.dataset.lang === lang ? '' : 'none';
         });
         localStorage.setItem('language', lang);
-        langToggle.textContent = lang.toUpperCase();
-        submitBtn.textContent = translations[lang].subscribe;
+        if (langToggle) langToggle.textContent = lang.toUpperCase();
+        if (submitBtn) submitBtn.textContent = translations[lang]?.subscribe || 'Subscribe';
     };
 
     // --- FORM MANAGEMENT ---
     const validateForm = () => {
-        submitBtn.disabled = !(emailInput.checkValidity() && consentCheckbox.checked);
+        if (submitBtn && nameInput && emailInput && consentCheckbox) {
+            submitBtn.disabled = !(nameInput.checkValidity() && emailInput.checkValidity() && consentCheckbox.checked);
+        }
     };
     
     const showFormMessage = (type, lang) => {
-        // Hide all messages first
-        document.getElementById('successMessage').style.display = 'none';
-        document.getElementById('successMessageDE').style.display = 'none';
-        document.getElementById('errorMessage').style.display = 'none';
-        document.getElementById('errorMessageDE').style.display = 'none';
-
+        document.querySelectorAll('.success-message, .error-message').forEach(el => el.style.display = 'none');
         if (type === 'success') {
             const successMsgId = lang === 'de' ? 'successMessageDE' : 'successMessage';
-            document.getElementById(successMsgId).style.display = 'block';
-            emailForm.style.display = 'none'; // Hide form on success
+            const el = getElement(successMsgId);
+            if(el) el.style.display = 'block';
+            if(emailForm) emailForm.style.display = 'none';
         } else if (type === 'error') {
             const errorMsgId = lang === 'de' ? 'errorMessageDE' : 'errorMessage';
-            document.getElementById(errorMsgId).style.display = 'block';
+            const el = getElement(errorMsgId);
+            if(el) el.style.display = 'flex';
+            if (typeof feather !== 'undefined') feather.replace({ width: '18px', height: '18px' });
         }
     };
 
@@ -90,19 +99,25 @@ document.addEventListener('DOMContentLoaded', () => {
         e.preventDefault();
         const lang = localStorage.getItem('language') || 'en';
         const formData = new FormData(emailForm);
+        
+        if(submitBtn) submitBtn.disabled = true;
+
         try {
-            const response = await fetch(emailForm.action, {
-                method: 'POST', body: formData, headers: { 'Accept': 'application/json' }
-            });
-            if (response.ok) {
+            const response = await fetch(emailForm.action, { method: 'POST', body: formData });
+            const text = await response.text();
+
+            if (text === "OK") {
                 showFormMessage('success', lang);
             } else {
-                showFormMessage('error', lang);
+                throw new Error(text);
             }
         } catch (error) {
+            console.error("Form submission error:", error);
             showFormMessage('error', lang);
+            if(submitBtn) submitBtn.disabled = false;
         }
     };
+
 
     // --- UI & ANIMATIONS ---
     const setupScrollAnimations = () => {
@@ -120,6 +135,7 @@ document.addEventListener('DOMContentLoaded', () => {
     
     const handleUiVisibility = () => {
         const header = document.querySelector('header');
+        if (!header || !backToTopBtn) return;
         let ticking = false;
         const update = () => {
             const scrollY = window.scrollY;
@@ -138,16 +154,13 @@ document.addEventListener('DOMContentLoaded', () => {
     // --- MODALS & COOKIES ---
     const setupModals = () => {
         const setupModalToggle = (linkSelector, modalId, closeId) => {
-            const modal = document.getElementById(modalId);
+            const modal = getElement(modalId);
+            const closeBtn = getElement(closeId);
+            if (!modal || !closeBtn) return;
             document.querySelectorAll(linkSelector).forEach(link => {
-                link.addEventListener('click', (e) => {
-                    e.preventDefault();
-                    modal.style.display = 'flex';
-                });
+                link.addEventListener('click', (e) => { e.preventDefault(); modal.style.display = 'flex'; });
             });
-            document.getElementById(closeId).addEventListener('click', () => {
-                modal.style.display = 'none';
-            });
+            closeBtn.addEventListener('click', () => { modal.style.display = 'none'; });
         };
         setupModalToggle('.privacy-link', 'privacyModal', 'closePrivacy');
         setupModalToggle('.impressum-link', 'impressumPanel', 'closeImpressum');
@@ -155,13 +168,14 @@ document.addEventListener('DOMContentLoaded', () => {
     
     const loadAnalytics = () => {
         const script = document.createElement('script');
-        script.defer = true;
-        script.setAttribute('data-domain', 'yourdomain.com');
-        script.src = 'https://plausible.io/js/script.js';
+        script.async = true;
+        script.setAttribute('data-goatcounter', 'https://YOUR-CODE.goatcounter.com/count');
+        script.src = '//gc.zgo.at/count.js';
         document.head.appendChild(script);
     };
 
     const setupCookieBanner = () => {
+        if (!cookieBanner) return;
         if (!localStorage.getItem('cookiesAccepted')) {
             cookieBanner.classList.add('active');
         }
@@ -170,54 +184,51 @@ document.addEventListener('DOMContentLoaded', () => {
                 const consent = button.dataset.consent;
                 localStorage.setItem('cookiesAccepted', consent);
                 cookieBanner.classList.remove('active');
-                if (consent === 'all') {
-                    loadAnalytics();
-                }
+                if (consent === 'all') loadAnalytics();
             });
         });
     };
 
     // --- INITIALIZATION ---
     const init = () => {
-        // Initial setup
-        const savedTheme = localStorage.getItem('theme') || 'dark';
-        const savedLang = localStorage.getItem('language') || 'en';
-        applyTheme(savedTheme);
-        applyLanguage(savedLang);
-        
-        // Event Listeners
-        themeToggle.addEventListener('click', () => {
-            const currentTheme = document.documentElement.classList.contains('theme-dark') ? 'dark' : 'light';
-            applyTheme(currentTheme === 'dark' ? 'light' : 'dark');
-        });
-        langToggle.addEventListener('click', () => {
-            const currentLang = localStorage.getItem('language') || 'en';
-            applyLanguage(currentLang === 'en' ? 'de' : 'en');
-        });
-        emailInput.addEventListener('input', validateForm);
-        consentCheckbox.addEventListener('change', validateForm);
-        emailForm.addEventListener('submit', handleFormSubmit);
-        backToTopBtn.addEventListener('click', () => {
-            window.scrollTo({ top: 0, behavior: 'smooth' });
-        });
+        try {
+            if (typeof feather !== 'undefined') feather.replace();
+            
+            const savedTheme = localStorage.getItem('theme') || 'dark';
+            const savedLang = localStorage.getItem('language') || 'en';
+            applyTheme(savedTheme);
+            applyLanguage(savedLang);
+            
+            if (themeToggle) themeToggle.addEventListener('click', () => {
+                const currentTheme = document.documentElement.classList.contains('theme-dark') ? 'dark' : 'light';
+                applyTheme(currentTheme === 'dark' ? 'light' : 'dark');
+            });
+            if (langToggle) langToggle.addEventListener('click', () => {
+                const currentLang = localStorage.getItem('language') || 'en';
+                applyLanguage(currentLang === 'en' ? 'de' : 'en');
+            });
+            if (nameInput) nameInput.addEventListener('input', validateForm);
+            if (emailInput) emailInput.addEventListener('input', validateForm);
+            if (consentCheckbox) consentCheckbox.addEventListener('change', validateForm);
+            if (emailForm) emailForm.addEventListener('submit', handleFormSubmit);
+            if (backToTopBtn) backToTopBtn.addEventListener('click', () => {
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            });
 
-        // UI Modules
-        handleUiVisibility();
-        setupScrollAnimations();
-        setupModals();
-        setupCookieBanner();
-        
-        feather.replace(); // Needs to be called for Back to Top icon
+            handleUiVisibility();
+            setupScrollAnimations();
+            setupModals();
+            setupCookieBanner();
 
-        // Load analytics if previously consented
-        if (localStorage.getItem('cookiesAccepted') === 'all') {
-            loadAnalytics();
+            if (localStorage.getItem('cookiesAccepted') === 'all') loadAnalytics();
+
+        } catch (error) {
+            console.error("An error occurred during initialization:", error);
+        } finally {
+            window.setTimeout(() => {
+                document.body.classList.remove('loading');
+            }, 100);
         }
-        
-        // Fade in page
-        window.setTimeout(() => {
-            document.body.classList.remove('loading');
-        }, 100);
     };
 
     init();
