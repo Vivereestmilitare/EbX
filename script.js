@@ -89,8 +89,11 @@ document.addEventListener('DOMContentLoaded', () => {
         if (type === 'success') {
             const successMsgId = lang === 'de' ? 'successMessageDE' : 'successMessage';
             const el = getElement(successMsgId);
-            if(el) el.classList.remove('hidden');
-            if(emailForm) emailForm.classList.add('hidden');
+            if(el) {
+                el.classList.remove('hidden');
+                // Hide the form itself on success
+                if(emailForm) emailForm.classList.add('hidden');
+            }
         } else if (type === 'error') {
             const errorMsgId = lang === 'de' ? 'errorMessageDE' : 'errorMessage';
             const el = getElement(errorMsgId);
@@ -106,33 +109,40 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     };
 
-    const handleFormSubmit = async (e) => {
-        e.preventDefault();
-        const lang = localStorage.getItem('language') || 'en';
-        const formData = new FormData(emailForm);
-        
-        if(submitBtn) submitBtn.disabled = true;
-
-        try {
-            const response = await fetch(emailForm.action, { method: 'POST', body: formData });
+    // --- NEW FORM SUBMISSION HANDLER ---
+    if (emailForm) {
+        emailForm.addEventListener("submit", async function(e) {
+            e.preventDefault(); // Stop redirect
+            if (submitBtn) submitBtn.disabled = true;
             
-            if (!response.ok) {
-                 throw new Error(`HTTP error! status: ${response.status}`);
-            }
+            const lang = localStorage.getItem('language') || 'en';
+            const data = new FormData(emailForm);
 
-            const data = await response.json();
+            try {
+                const response = await fetch(emailForm.action, {
+                    method: "POST",
+                    body: data,
+                });
 
-            if (data.status === "success") {
-                showFormMessage('success', lang);
-            } else {
-                throw new Error(data.message || 'Unknown error from script.');
+                if (!response.ok) {
+                    throw new Error(`HTTP error! status: ${response.status}`);
+                }
+
+                const result = await response.json();
+
+                if (result.status === "success") {
+                    showFormMessage("success", lang);
+                    emailForm.reset();
+                } else {
+                    throw new Error(result.message || "Submission failed.");
+                }
+            } catch (error) {
+                console.error("Error submitting form:", error);
+                showFormMessage("error", lang);
+                if (submitBtn) submitBtn.disabled = false;
             }
-        } catch (error) {
-            console.error("Form submission error:", error);
-            showFormMessage('error', lang);
-            if(submitBtn) submitBtn.disabled = false;
-        }
-    };
+        });
+    }
 
     // --- UI & ANIMATIONS ---
     const setupScrollAnimations = () => {
@@ -225,10 +235,13 @@ document.addEventListener('DOMContentLoaded', () => {
                 const currentLang = localStorage.getItem('language') || 'en';
                 applyLanguage(currentLang === 'en' ? 'de' : 'en');
             });
+
+            // The main form submission logic is now handled by its own listener above.
+            // We only need the validation listeners here.
             if (nameInput) nameInput.addEventListener('input', validateForm);
             if (emailInput) emailInput.addEventListener('input', validateForm);
             if (consentCheckbox) consentCheckbox.addEventListener('change', validateForm);
-            if (emailForm) emailForm.addEventListener('submit', handleFormSubmit);
+            
             if (backToTopBtn) backToTopBtn.addEventListener('click', () => {
                 window.scrollTo({ top: 0, behavior: 'smooth' });
             });
@@ -249,5 +262,6 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     };
 
+    // Run all setup tasks
     init();
 });
