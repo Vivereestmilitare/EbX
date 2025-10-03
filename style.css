@@ -22,6 +22,9 @@
 .loading { opacity: 0; transition: opacity 0.5s ease-in-out; }
 body:not(.loading) { opacity: 1; }
 
+/* Utility Class */
+.hidden { display: none !important; }
+
 * { margin: 0; padding: 0; box-sizing: border-box; }
 body { font-family: system-ui, -apple-system, sans-serif; background-color: var(--clr-bg); color: var(--clr-text); line-height: 1.6; transition: var(--transition); }
 .container { max-width: 1200px; margin: 0 auto; padding: 0 1rem; }
@@ -120,31 +123,45 @@ section { padding: 5rem 0; position: relative; z-index: 5; background: var(--clr
 .service-card:hover::before { left: 100%; }
 .service-card::after { content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: radial-gradient(circle at top right, rgba(99, 102, 241, 0.1), transparent 70%); opacity: 0; transition: var(--transition); }
 .service-card:hover::after { opacity: 1; }
-.service-card .card-border { position: absolute; top: 0; left: 0; right: 0; bottom: 0; border-radius: 1.5rem; padding: 2px; background: linear-gradient(45deg, rgba(99, 102, 241, 0.5), rgba(16, 185, 129, 0.5), rgba(99, 102, 241, 0.5)); -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0); mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0); -webkit-mask-composite: xor; mask-composite: exclude; opacity: 0; transition: var(--transition); }
-.service-card:hover .card-border { opacity: 1; }
+.service-card .card-border, .feature .card-border {
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    border-radius: 1.5rem;
+    padding: 2px;
+    background: linear-gradient(45deg, rgba(99, 102, 241, 0.5), rgba(16, 185, 129, 0.5), rgba(99, 102, 241, 0.5));
+    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    opacity: 0;
+    transition: var(--transition);
+}
+.service-card:hover .card-border, .feature:hover .card-border {
+    opacity: 1;
+}
 .theme-light .service-card { background: linear-gradient(145deg, rgba(236, 240, 243, 0.8), rgba(224, 230, 236, 0.7)); border: 1px solid rgba(0, 0, 0, 0.05); }
-.service-card:hover { 
-    transform: translateY(-8px) scale(1.02); 
-    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3), 0 0 30px rgba(99, 102, 241, 0.2); 
+.service-card:hover {
+    transform: translateY(-8px) scale(1.02);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3), 0 0 30px rgba(99, 102, 241, 0.2);
     border-color: rgba(255, 255, 255, 0.2);
 }
 
 /* --- Why Us Section (Pillars of Trust) --- */
 .why-us-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 2rem; text-align: center; }
-.feature { 
-    padding: 2.5rem 2rem; 
+.feature {
+    padding: 2.5rem 2rem;
     background: radial-gradient(circle at top left, rgba(255,255,255,0.03) 0%, transparent 30%),
                 linear-gradient(145deg, rgba(15, 23, 42, 0.15), rgba(8, 47, 73, 0.1));
-    border-radius: 1.5rem; 
-    border: 1px solid rgba(255, 255, 255, 0.1); 
-    transition: var(--transition); 
-    position: relative; 
-    overflow: hidden; 
+    border-radius: 1.5rem;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    transition: var(--transition);
+    position: relative;
+    overflow: hidden;
 }
-.feature:hover { 
-    transform: translateY(-5px); 
-    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2); 
-    border-color: var(--clr-primary); 
+.feature:hover {
+    transform: translateY(-8px) scale(1.02);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3), 0 0 30px rgba(99, 102, 241, 0.2);
+    border-color: rgba(255, 255, 255, 0.2);
 }
 .theme-light .feature { background: linear-gradient(145deg, rgba(236, 240, 243, 0.8), rgba(224, 230, 236, 0.7)); border: 1px solid rgba(0, 0, 0, 0.05); }
 
@@ -156,42 +173,57 @@ section { padding: 5rem 0; position: relative; z-index: 5; background: var(--clr
     width: 80px;
     height: 80px;
 }
-.pillar-icon .pillar-shape, .pillar-icon .pillar-core, .pillar-icon .pillar-glow {
-    transition: transform 0.4s cubic-bezier(0.2, 0.8, 0.2, 1);
-}
-.feature:hover .pillar-core {
-    transform: scale(1.2) rotate(45deg);
-    transform-origin: center;
-}
-.feature:hover .pillar-glow {
-    transform: scale(1.5);
-    transform-origin: center;
-}
-.feature:hover .pillar-shape {
-    transform: rotate(15deg);
-    transform-origin: center;
+
+/* --- UNIFIED ICON ANIMATION --- */
+
+/* 1. Define a single, reusable pulse animation */
+@keyframes icon-pulse {
+    0% { transform: translateY(0); opacity: 1; }
+    50% { transform: translateY(-8px); opacity: 0.5; }
+    100% { transform: translateY(0); opacity: 1; }
 }
 
-/* NEW: Custom animation for Growth icon */
+/* 2. Make all animatable parts of the icons ready */
+.pillar-icon .pillar-shape, 
+.pillar-icon .pillar-core,
+.pillar-icon .humanity-head,
+.pillar-icon .humanity-body,
 .icon-growth .growth-chevron {
-    opacity: 0;
-    transform: translateY(10px);
-    transition: all 0.3s ease-out;
-}
-.feature:hover .icon-growth .growth-chevron:nth-child(1) {
+    /* Set initial state for all icons */
+    transition: var(--transition);
     opacity: 1;
     transform: translateY(0);
-    transition-delay: 0s;
+}
+
+/* 3. Apply the pulse animation on hover with delays */
+
+/* Expertise Icon */
+.feature:hover .pillar-icon .pillar-core {
+    animation: icon-pulse 0.8s ease-in-out;
+}
+.feature:hover .pillar-icon .pillar-shape {
+    animation: icon-pulse 0.8s ease-in-out 0.1s;
+}
+
+/* Humanity Icon */
+.feature:hover .pillar-icon .humanity-head {
+    animation: icon-pulse 0.8s ease-in-out;
+}
+.feature:hover .pillar-icon .humanity-body {
+    animation: icon-pulse 0.8s ease-in-out 0.1s;
+}
+
+/* Growth Icon */
+.feature:hover .icon-growth .growth-chevron:nth-child(1) {
+    animation: icon-pulse 0.8s ease-in-out;
 }
 .feature:hover .icon-growth .growth-chevron:nth-child(2) {
-    opacity: 1;
-    transform: translateY(0);
-    transition-delay: 0.1s;
+    animation-delay: 0.1s;
+    animation: icon-pulse 0.8s ease-in-out;
 }
 .feature:hover .icon-growth .growth-chevron:nth-child(3) {
-    opacity: 1;
-    transform: translateY(0);
-    transition-delay: 0.2s;
+    animation-delay: 0.2s;
+    animation: icon-pulse 0.8s ease-in-out;
 }
 
 
@@ -218,8 +250,8 @@ input[type="text"]:focus, input[type="email"]:focus { outline: none; border-colo
 .btn:hover::before { left: 100%; }
 .btn:disabled { opacity: 0.5; cursor: not-allowed; }
 .btn:hover:not(:disabled) { transform: translateY(-3px); box-shadow: 0 15px 30px rgba(99, 102, 241, 0.3); }
-.success-message { background: var(--clr-secondary); color: white; padding: 1.5rem; border-radius: 1rem; margin-top: 2rem; text-align: center; font-size: 1.1rem; display: none; animation: fadeIn 0.5s ease; }
-.error-message { background: linear-gradient(135deg, rgba(244, 63, 94, 0.2), rgba(239, 68, 68, 0.1)); border: 1px solid var(--clr-error); color: #fecaca; padding: 1rem 1.5rem; border-radius: 1rem; margin-top: 2rem; display: none; align-items: center; gap: 0.75rem; animation: fadeIn 0.5s ease; }
+.success-message { background: var(--clr-secondary); color: white; padding: 1.5rem; border-radius: 1rem; margin-top: 2rem; text-align: center; font-size: 1.1rem; animation: fadeIn 0.5s ease; }
+.error-message { background: linear-gradient(135deg, rgba(244, 63, 94, 0.2), rgba(239, 68, 68, 0.1)); border: 1px solid var(--clr-error); color: #fecaca; padding: 1rem 1.5rem; border-radius: 1rem; margin-top: 2rem; display: flex; align-items: center; gap: 0.75rem; animation: fadeIn 0.5s ease; }
 @keyframes fadeIn { from { opacity: 0; transform: translateY(-10px); } to { opacity: 1; transform: translateY(0); } }
 
 /* Footer & Modals */
@@ -229,7 +261,7 @@ footer { background: rgba(0, 0, 0, 0.2); padding: 3rem 0; margin-top: 5rem; }
 .footer-links { display: flex; gap: 1rem; }
 .footer-links a { color: var(--clr-muted); text-decoration: none; transition: var(--transition); }
 .footer-links a:hover { color: var(--clr-primary); }
-.modal { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.8); z-index: 2000; align-items: center; justify-content: center; backdrop-filter: blur(5px); }
+.modal { display: flex; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.8); z-index: 2000; align-items: center; justify-content: center; backdrop-filter: blur(5px); }
 .modal-content { background: var(--clr-bg); padding: 2rem 3rem; border-radius: 1rem; max-width: 650px; max-height: 80vh; overflow-y: auto; position: relative; border: 1px solid rgba(255,255,255,0.1); }
 .modal-content h2, .modal-content h4 { color: var(--clr-primary); margin-top: 1.5rem; margin-bottom: 0.5rem; }
 .modal-content p, .modal-content li { margin-bottom: 1rem; line-height: 1.7; color: var(--clr-text); }
@@ -273,4 +305,3 @@ footer { background: rgba(0, 0, 0, 0.2); padding: 3rem 0; margin-top: 5rem; }
     .modal-content { max-width: 90vw; padding: 1.5rem; }
     #backToTopBtn { bottom: 1rem; right: 1rem; width: 40px; height: 40px; }
 }
-
