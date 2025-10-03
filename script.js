@@ -46,6 +46,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     };
 
+    // UPDATED: VANTA color is now a specific royal blue
     const handleVanta = (theme) => {
         if (theme === 'dark' && !vantaEffect) {
             if (typeof VANTA !== 'undefined') {
@@ -53,7 +54,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     el: "#vantaBg",
                     mouseControls: true, touchControls: true, gyroControls: false,
                     minHeight: 200.00, minWidth: 200.00, scale: 1.00, scaleMobile: 1.00,
-                    color: getComputedStyle(document.documentElement).getPropertyValue('--clr-primary'),
+                    color: 0x4169e1, // Royal Blue (Vanta.js uses hex numbers)
                     backgroundColor: getComputedStyle(document.documentElement).getPropertyValue('--clr-bg')
                 });
             }
@@ -91,7 +92,6 @@ document.addEventListener('DOMContentLoaded', () => {
             const el = getElement(successMsgId);
             if(el) {
                 el.classList.remove('hidden');
-                // Hide the form itself on success
                 if(emailForm) emailForm.classList.add('hidden');
             }
         } else if (type === 'error') {
@@ -103,16 +103,15 @@ document.addEventListener('DOMContentLoaded', () => {
                     errorTextSpan.textContent = translations[lang]?.formError || 'An error occurred.';
                 }
                 el.classList.remove('hidden');
-                el.style.display = 'flex'; // Keep flex for icon alignment
+                el.style.display = 'flex';
             }
             if (typeof feather !== 'undefined') feather.replace({ width: '18px', height: '18px' });
         }
     };
 
-    // --- NEW FORM SUBMISSION HANDLER ---
     if (emailForm) {
         emailForm.addEventListener("submit", async function(e) {
-            e.preventDefault(); // Stop redirect
+            e.preventDefault();
             if (submitBtn) submitBtn.disabled = true;
             
             const lang = localStorage.getItem('language') || 'en';
@@ -236,8 +235,6 @@ document.addEventListener('DOMContentLoaded', () => {
                 applyLanguage(currentLang === 'en' ? 'de' : 'en');
             });
 
-            // The main form submission logic is now handled by its own listener above.
-            // We only need the validation listeners here.
             if (nameInput) nameInput.addEventListener('input', validateForm);
             if (emailInput) emailInput.addEventListener('input', validateForm);
             if (consentCheckbox) consentCheckbox.addEventListener('change', validateForm);
@@ -262,6 +259,5 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     };
 
-    // Run all setup tasks
     init();
 });
