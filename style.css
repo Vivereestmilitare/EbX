@@ -175,45 +175,32 @@ section { padding: 5rem 0; position: relative; z-index: 5; background: var(--clr
 }
 
 /* --- UNIFIED ICON ANIMATION --- */
-
-/* 1. Define a single, reusable pulse animation */
 @keyframes icon-pulse {
     0% { transform: translateY(0); opacity: 1; }
     50% { transform: translateY(-8px); opacity: 0.5; }
     100% { transform: translateY(0); opacity: 1; }
 }
-
-/* 2. Make all animatable parts of the icons ready */
 .pillar-icon .pillar-shape, 
 .pillar-icon .pillar-core,
 .pillar-icon .humanity-head,
 .pillar-icon .humanity-body,
 .icon-growth .growth-chevron {
-    /* Set initial state for all icons */
     transition: var(--transition);
     opacity: 1;
     transform: translateY(0);
 }
-
-/* 3. Apply the pulse animation on hover with delays */
-
-/* Expertise Icon */
 .feature:hover .pillar-icon .pillar-core {
     animation: icon-pulse 0.8s ease-in-out;
 }
 .feature:hover .pillar-icon .pillar-shape {
     animation: icon-pulse 0.8s ease-in-out 0.1s;
 }
-
-/* Humanity Icon */
 .feature:hover .pillar-icon .humanity-head {
     animation: icon-pulse 0.8s ease-in-out;
 }
 .feature:hover .pillar-icon .humanity-body {
     animation: icon-pulse 0.8s ease-in-out 0.1s;
 }
-
-/* Growth Icon */
 .feature:hover .icon-growth .growth-chevron:nth-child(1) {
     animation: icon-pulse 0.8s ease-in-out;
 }
