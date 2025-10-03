@@ -66,7 +66,11 @@ document.addEventListener('DOMContentLoaded', () => {
     // --- LANGUAGE MANAGEMENT ---
     const applyLanguage = (lang) => {
         document.querySelectorAll('[data-lang]').forEach(el => {
-            el.style.display = el.dataset.lang === lang ? '' : 'none';
+            if (el.dataset.lang === lang) {
+                el.classList.remove('hidden');
+            } else {
+                el.classList.add('hidden');
+            }
         });
         localStorage.setItem('language', lang);
         if (langToggle) langToggle.textContent = lang.toUpperCase();
@@ -81,16 +85,23 @@ document.addEventListener('DOMContentLoaded', () => {
     };
     
     const showFormMessage = (type, lang) => {
-        document.querySelectorAll('.success-message, .error-message').forEach(el => el.style.display = 'none');
+        document.querySelectorAll('.success-message, .error-message').forEach(el => el.classList.add('hidden'));
         if (type === 'success') {
             const successMsgId = lang === 'de' ? 'successMessageDE' : 'successMessage';
             const el = getElement(successMsgId);
-            if(el) el.style.display = 'block';
-            if(emailForm) emailForm.style.display = 'none';
+            if(el) el.classList.remove('hidden');
+            if(emailForm) emailForm.classList.add('hidden');
         } else if (type === 'error') {
             const errorMsgId = lang === 'de' ? 'errorMessageDE' : 'errorMessage';
             const el = getElement(errorMsgId);
-            if(el) el.style.display = 'flex';
+            if(el) {
+                const errorTextSpan = el.querySelector('span');
+                if (errorTextSpan) {
+                    errorTextSpan.textContent = translations[lang]?.formError || 'An error occurred.';
+                }
+                el.classList.remove('hidden');
+                el.style.display = 'flex'; // Keep flex for icon alignment
+            }
             if (typeof feather !== 'undefined') feather.replace({ width: '18px', height: '18px' });
         }
     };
@@ -104,12 +115,17 @@ document.addEventListener('DOMContentLoaded', () => {
 
         try {
             const response = await fetch(emailForm.action, { method: 'POST', body: formData });
-            const text = await response.text();
+            
+            if (!response.ok) {
+                 throw new Error(`HTTP error! status: ${response.status}`);
+            }
 
-            if (text === "OK") {
+            const data = await response.json();
+
+            if (data.status === "success") {
                 showFormMessage('success', lang);
             } else {
-                throw new Error(text);
+                throw new Error(data.message || 'Unknown error from script.');
             }
         } catch (error) {
             console.error("Form submission error:", error);
@@ -117,7 +133,6 @@ document.addEventListener('DOMContentLoaded', () => {
             if(submitBtn) submitBtn.disabled = false;
         }
     };
-
 
     // --- UI & ANIMATIONS ---
     const setupScrollAnimations = () => {
@@ -157,11 +172,14 @@ document.addEventListener('DOMContentLoaded', () => {
             const modal = getElement(modalId);
             const closeBtn = getElement(closeId);
             if (!modal || !closeBtn) return;
+            
             document.querySelectorAll(linkSelector).forEach(link => {
-                link.addEventListener('click', (e) => { e.preventDefault(); modal.style.display = 'flex'; });
+                link.addEventListener('click', (e) => { e.preventDefault(); modal.classList.remove('hidden'); });
             });
-            closeBtn.addEventListener('click', () => { modal.style.display = 'none'; });
+            
+            closeBtn.addEventListener('click', () => { modal.classList.add('hidden'); });
         };
+        
         setupModalToggle('.privacy-link', 'privacyModal', 'closePrivacy');
         setupModalToggle('.impressum-link', 'impressumPanel', 'closeImpressum');
     };
@@ -233,4 +251,3 @@ document.addEventListener('DOMContentLoaded', () => {
 
     init();
 });
-
